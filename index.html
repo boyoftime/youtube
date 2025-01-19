@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inviloader - Download YouTube Videos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+    <link rel="icon" href="favicon.ico" type="image/x-icon"> <!-- Favicon -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 3em;
+        }
+
+        header p {
+            font-size: 1.2em;
+        }
+
+        .get-started {
+            background-color: #fff;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .get-started h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .software-info {
+            padding: 40px;
+            text-align: center;
+        }
+
+        .software-info table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+
+        .software-info th, .software-info td {
+            padding: 15px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        .software-info th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .download-btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+
+        .download-btn:hover {
+            background-color: #45a049;
+        }
+
+        .info {
+            font-size: 0.9em;
+            color: #777;
+            margin-top: 10px;
+        }
+
+        .ffmpeg-info {
+            background-color: #fff;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .ffmpeg-info p {
+            margin-bottom: 20px;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        footer a {
+            color: #25D366;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .whatsapp-icon {
+            width: 30px;
+            height: 30px;
+            margin-left: 10px;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5em;
+            }
+
+            .software-info table {
+                font-size: 0.9em;
+            }
+
+            .get-started h2 {
+                font-size: 2em;
+            }
+
+            .software-info td, .software-info th {
+                font-size: 0.9em;
+            }
+
+            footer {
+                font-size: 0.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Inviloader</h1>
+        <p>Your powerful tool to download YouTube videos with ease</p>
+    </header>
+
+    <section class="get-started">
+        <h2>Get Started with Inviloader</h2>
+        <p>Inviloader lets you download any YouTube video directly to your PC through a simple CMD command.</p>
+    </section>
+
+    <section class="software-info">
+        <h2>Free Version</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Version</th>
+                    <th>Size</th>
+                    <th>Release Date</th>
+                    <th>Version Code</th>
+                    <th>Features</th>
+                    <th>Download</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Add new free versions here -->
+                <tr>
+                    <td>Inviloader Version 6.0</td>
+                    <td>15MB</td>
+                    <td>January 2025</td>
+                    <td>6.0.0</td>
+                    <td>
+                        <ul>
+                            <li>Download YouTube videos in CMD</li>
+                            <li>Easy to use interface</li>
+                            <li>Supports all YouTube video formats</li>
+                        </ul>
+                    </td>
+                    <td><a href="inviloader_v6.0.exe" class="download-btn" download>Download Now</a></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Paid Version</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Version</th>
+                    <th>Size</th>
+                    <th>Release Date</th>
+                    <th>Version Code</th>
+                    <th>Features</th>
+                    <th>Download</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Add new paid versions here -->
+                <tr>
+                    <td>Inviloader Plus (Paid Version)</td>
+                    <td>20MB</td>
+                    <td>December 2024</td>
+                    <td>5.5.0</td>
+                    <td>
+                        <ul>
+                            <li>Advanced features for power users</li>
+                            <li>Batch downloads</li>
+                            <li>Faster download speeds</li>
+                            <li>Download from multiple sources</li>
+                        </ul>
+                    </td>
+                    <td><a href="inviloader_plus.exe" class="download-btn" download>Download Now</a></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p class="info">Version 6.0 is free to use. Inviloader Plus offers advanced features for power users and is available for purchase.</p>
+    </section>
+
+    <section class="ffmpeg-info">
+        <h2>FFmpeg Required</h2>
+        <p>Inviloader requires FFmpeg to function properly. Click the button below to download FFmpeg:</p>
+        <a href="ffmpeg.zip" class="download-btn" download>Download FFmpeg</a>
+        <p class="info">Follow the instructions below to install FFmpeg on your computer:</p>
+        <ol>
+            <li>Download FFmpeg using the button above.</li>
+            <li>Extract the contents of the zip file to a folder on your computer.</li>
+            <li>Navigate to the folder where you extracted FFmpeg.</li>
+            <li>Open the Command Prompt or Terminal and add the FFmpeg bin folder to your system's PATH environment variable.</li>
+            <li>Test the installation by typing <code>ffmpeg -version</code> in your command line.</li>
+        </ol>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Inviloader | All Rights Reserved</p>
+        <p>Chat with us on WhatsApp <a href="https://wa.me/123456789" target="_blank"><img src="whatsapp-icon.png" alt="WhatsApp" class="whatsapp-icon"></a></p>
+    </footer>
+</body>
+</html>
