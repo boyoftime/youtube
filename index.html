@@ -93,6 +93,253 @@
         footer a:hover {
             text-decoration: underline;
         }
+
+
+        /* CSS for the Get Started Section */
+        .get-started {
+            background-color: #2c2c2c; /* Dark gray background */
+            border: 1px solid #444; /* Subtle border */
+            border-radius: 10px; /* Rounded corners */
+            padding: 30px; /* Inner padding for the content */
+            margin: 20px auto; /* Add margin for spacing */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
+            max-width: 800px; /* Limit the width for better readability */
+            color: #f8f9fa; /* Light text color for readability */
+            text-align: left; /* Align text to the left */
+        }
+
+        /* Heading styles for the section */
+        .get-started h2 {
+            text-align: center; /* Center-align the heading */
+            color: #ffffff; /* White color for the heading */
+            font-weight: bold; /* Bold text */
+            margin-bottom: 20px; /* Spacing below the heading */
+        }
+
+        /* Paragraph styling */
+        .get-started p {
+            line-height: 1.6; /* Improve readability */
+            margin-bottom: 15px; /* Space between paragraphs */
+        }
+
+        /* List styles for advantages */
+        .get-started ul {
+            padding-left: 20px; /* Indent the list */
+        }
+
+        .get-started ul li {
+            margin-bottom: 10px; /* Space between list items */
+            list-style: disc; /* Standard bullet points */
+        }
+
+
+ 
+
+        /* Parent container for horizontal alignment */
+.info-section .row {
+    display: flex; /* Use Flexbox for horizontal layout */
+    flex-wrap: nowrap; /* Prevent wrapping */
+    gap: 20px; /* Space between the boxes */
+}
+
+/* Style for the Get Started Box */
+.info-section .get-started {
+    flex: 1; /* Equal width for both boxes */
+    display: flex; /* Flexbox for content alignment */
+    flex-direction: column; /* Arrange content vertically */
+    justify-content: space-between; /* Space out content */
+    background-color: #2c2c2c; /* Dark background */
+    border: 1px solid #444; /* Subtle border */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow */
+    color: #f8f9fa; /* Light text */
+    padding: 20px; /* Inner padding */
+    min-height: 400px; /* Ensures both boxes have the same height */
+}
+
+/* Style for the Free Download Section (No Box) */
+.info-section .free-download {
+    flex: 1; /* Same width as the Get Started box */
+    display: flex; /* Flexbox for content alignment */
+    flex-direction: column; /* Arrange content vertically */
+    justify-content: center; /* Center-align content */
+    padding: 20px; /* Inner padding */
+    color: #f8f9fa; /* Light text */
+}
+
+/* Heading styles */
+.info-section h2 {
+    text-align: center; /* Center-align heading */
+    color: #ffffff; /* White text for headings */
+    font-weight: bold; /* Make headings bold */
+    margin-bottom: 20px; /* Spacing below heading */
+}
+
+/* Paragraph and list styles */
+.info-section p,
+.info-section ul {
+    line-height: 1.6; /* Improve readability */
+    margin-bottom: 15px; /* Space between paragraphs and lists */
+}
+
+/* Logo styles with animation */
+.free-download .logo-container {
+    text-align: center; /* Center the logo */
+    margin-top: 20px; /* Add spacing above the logo */
+}
+
+/* Logo styles with increased size and animation */
+.free-download .logo-img {
+    max-width: 150%; /* Increase maximum width */
+    max-height: 200px; /* Increase maximum height */
+    animation: zoom-in-out 2s infinite; /* Apply smooth animation */
+}
+
+/* Zoom-in-out animation keyframes */
+@keyframes zoom-in-out {
+    0%, 100% {
+        transform: scale(1); /* Normal size */
+    }
+    50% {
+        transform: scale(1.2); /* Larger zoom (from 1.1 to 1.2) */
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .info-section .row {
+        flex-wrap: wrap; /* Stack boxes vertically on smaller screens */
+    }
+
+    .info-section .get-started,
+    .info-section .free-download {
+        min-height: auto; /* Remove fixed height on smaller screens */
+    }
+}
+
+/* Title below the logo */
+.scroll-title {
+    text-align: center; /* Center-align the text */
+    margin-top: 15px; /* Add space between the logo and the title */
+    font-size: 1.2rem; /* Set a slightly larger font size */
+    color: #f8f9fa; /* Light text color */
+    animation: fade-in 2s ease-in-out; /* Add a subtle fade-in effect */
+}
+
+/* Fade-in animation for the title */
+@keyframes fade-in {
+    0% {
+        opacity: 0; /* Start invisible */
+    }
+    100% {
+        opacity: 1; /* Fully visible */
+    }
+}
+
+
+/* Styling for download buttons */
+.download-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Space between buttons */
+    margin: 15px 0;
+    align-items: center; /* Center-align buttons */
+}
+
+.download-btn {
+    background-color: #6a0dad; /* Button background color */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    display: flex; /* Flex for icon alignment */
+    align-items: center;
+    gap: 10px; /* Space between icon and text */
+}
+
+.download-btn:hover {
+    background-color: #7323d0;
+    text-decoration: none;
+}
+
+/* Styling for icons in buttons */
+.button-icon {
+    width: 20px; /* Icon width */
+    height: 20px; /* Icon height */
+}
+
+
+/* Container for the Installation Guide */
+.installation-guide-container {
+    background-color: #2c2f38; /* Background color of the box */
+    border-radius: 10px; /* Rounded corners */
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Soft shadow */
+    margin-top: 20px;
+    text-align: center; /* Center all text inside the box */
+}
+
+/* Styling for the Installation Guide Box */
+.installation-guide-box h2 {
+    font-size: 2rem;
+    color: #f8f9fa; /* Light text color */
+    margin-bottom: 15px;
+}
+
+.installation-guide-box p {
+    font-size: 1rem;
+    color: #d1d1d1; /* Slightly dimmed text color */
+    margin-bottom: 15px;
+}
+
+.installation-guide-box ol {
+    padding-left: 20px;
+    list-style-position: inside; /* Keep list bullets inside the box */
+    margin-bottom: 20px;
+}
+
+.installation-guide-box .download-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Space between buttons */
+    margin: 15px 0;
+    align-items: center; /* Center the buttons horizontally */
+}
+
+.installation-guide-box .download-btn {
+    background-color: #6a0dad; /* Button background color */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between icon and text */
+    justify-content: center; /* Ensure the icon and text are centered */
+}
+
+.installation-guide-box .download-btn:hover {
+    background-color: #7323d0;
+    text-decoration: none;
+}
+
+.installation-guide-box .button-icon {
+    width: 20px; /* Icon width */
+    height: 20px; /* Icon height */
+}
+
+/* Link in the tutorial section */
+.installation-guide-box .youtube-link {
+    color: #ffd700; /* Gold color for the tutorial link */
+}
+
+.installation-guide-box .youtube-link:hover {
+    text-decoration: underline;
+}
+
+
     </style>
 </head>
 <body>
@@ -102,17 +349,40 @@
         <p>Your powerful tool to download YouTube videos with ease</p>
     </header>
 
-    <section class="get-started text-center py-5">
-        <h2>Get Started with Inviloader</h2>
-        <p>Inviloader is a revolutionary tool that allows you to download YouTube videos directly to your PC using a simple CMD command. Whether you want to save videos for offline viewing, backup content, or repurpose videos for personal use, Inviloader makes it fast and efficient.</p>
-        <p>The program works by integrating with FFmpeg, a powerful multimedia framework, to handle video and audio processing. Once set up, you can simply enter a YouTube video link into the command line, and Inviloader will take care of the rest.</p>
-        <p>Advantages of using Inviloader include:</p>
-        <ul class="text-start d-inline-block">
-            <li>Fast downloads with minimal system requirements.</li>
-            <li>Support for multiple video resolutions and formats.</li>
-            <li>Simple and user-friendly command-line interface.</li>
-            <li>Free version with robust features, and a premium version with advanced tools.</li>
-        </ul>
+    <section class="info-section container py-5">
+        <div class="row">
+            <!-- Get Started Box -->
+            <div class="col-md-6">
+                <div class="get-started py-4 px-3">
+                    <h2>Get Started with Inviloader</h2>
+                    <p>Inviloader is a revolutionary tool that allows you to download YouTube videos directly to your PC using a simple CMD command. Whether you want to save videos for offline viewing, backup content, or repurpose videos for personal use, Inviloader makes it fast and efficient.</p>
+                    <p>The program works by integrating with FFmpeg, a powerful multimedia framework, to handle video and audio processing. Once set up, you can simply enter a YouTube video link into the command line, and Inviloader will take care of the rest.</p>
+                    <p>Advantages of using Inviloader include:</p>
+                    <ul>
+                        <li>Fast downloads with minimal system requirements.</li>
+                        <li>Support for multiple video resolutions and formats.</li>
+                        <li>Simple and user-friendly command-line interface.</li>
+                        <li>Free version with robust features, and a premium version with advanced tools.</li>
+                    </ul>
+                </div>
+            </div>
+    
+            <!-- Free to Download Box -->
+            <div class="col-md-6">
+                <div class="free-download py-4 px-3">
+                    <h2>It's Free to Download Inviloader</h2>
+                    <p>Inviloader is available for free to everyone! Experience all the core features without any cost, and enjoy a smooth, seamless downloading experience.</p>
+                    <p>Looking for advanced features like batch downloads and faster speeds? Check out our premium version, Inviloader Plus, for even more power.</p>
+                    <div class="logo-container text-center mt-3">
+                        <img src="inviloader-trans.png" alt="Inviloader Logo" class="logo-img">
+                        <div class="logo-container">
+                            <h3 class="scroll-title">Scroll down to download Inviloader</h3>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
     <section class="software-info container py-5">
@@ -211,16 +481,28 @@
         </div>
     </section>
 
-    <section class="installation-guide text-center py-5">
-        <h2>Installation Guide</h2>
-        <p>Follow these steps to install Inviloader and FFmpeg:</p>
-        <ol class="text-start d-inline-block">
-            <li>Download the latest version of Inviloader from the table above.</li>
-            <li>Install FFmpeg by clicking the link below:</li>
-            <a href="https://ffmpeg.org/download.html" class="download-btn" target="_blank">Download FFmpeg</a>
-            <li>Configure FFmpeg on your PC by adding it to your system's PATH environment variable.</li>
-        </ol>
-        <p>Need more help? <a href="https://youtube.com/tutorial-link" target="_blank" class="youtube-link">Click here to view a tutorial on YouTube</a>.</p>
+    <section class="installation-guide-container py-5">
+        <div class="installation-guide-box">
+            <h2>Installation Guide</h2>
+            <p>Follow these steps to install Inviloader and FFmpeg:</p>
+            <ol class="text-start d-inline-block">
+                <li>Download the latest version of Inviloader from the table above.</li>
+                <li>Install FFmpeg by choosing your operating system below:</li>
+                <div class="download-buttons">
+                    <a href="ffmpeg-windows.7z" class="download-btn" download>
+                        <img src="windows.png" alt="Windows Icon" class="button-icon"> Download for Windows
+                    </a>
+                    <a href="path/to/ffmpeg-mac.zip" class="download-btn" download>
+                        <img src="mac-os.png" alt="Mac Icon" class="button-icon"> Download for Mac
+                    </a>
+                    <a href="path/to/ffmpeg-linux.zip" class="download-btn" download>
+                        <img src="linux.png" alt="Linux Icon" class="button-icon"> Download for Linux
+                    </a>
+                </div>
+                <li>Configure FFmpeg on your PC by adding it to your system's PATH environment variable.</li>
+            </ol>
+            <p>Need more help? <a href="https://youtube.com/tutorial-link" target="_blank" class="youtube-link">Click here to view a tutorial on YouTube</a>.</p>
+        </div>
     </section>
 
     <footer>
