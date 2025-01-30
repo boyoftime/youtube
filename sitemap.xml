@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+    <!-- Home Page -->
+    <url>
+        <loc>https://yourwebsite.com/</loc>
+        <lastmod>2025-01-29</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+
+    <!-- Download Page -->
+    <url>
+        <loc>https://yourwebsite.com/download</loc>
+        <lastmod>2025-01-29</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- Installation Guide -->
+    <url>
+        <loc>https://yourwebsite.com/installation-guide</loc>
+        <lastmod>2025-01-29</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Screenshots Page -->
+    <url>
+        <loc>https://yourwebsite.com/screenshots</loc>
+        <lastmod>2025-01-29</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- Free Version Details -->
+    <url>
+        <loc>https://yourwebsite.com/free-version</loc>
+        <lastmod>2025-01-29</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Pro Version Details -->
+    <url>
+        <loc>https://yourwebsite.com/pro-version</loc>
+        <lastmod>2025-01-29</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Contact Page -->
+    <url>
+        <loc>https://yourwebsite.com/contact</loc>
+        <lastmod>2025-01-29</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <!-- Terms & Privacy Policy (If Exists) -->
+    <url>
+        <loc>https://yourwebsite.com/privacy-policy</loc>
+        <lastmod>2025-01-29</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+
+</urlset>
