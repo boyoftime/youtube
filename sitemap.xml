@@ -3,7 +3,7 @@
 
     <!-- Home Page -->
     <url>
-        <loc>https://yourwebsite.com/</loc>
+        <loc>https://inviloader.pro/</loc>
         <lastmod>2025-01-29</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
@@ -11,7 +11,7 @@
 
     <!-- Download Page -->
     <url>
-        <loc>https://yourwebsite.com/download</loc>
+        <loc>https://inviloader.pro/download</loc>
         <lastmod>2025-01-29</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
@@ -19,7 +19,7 @@
 
     <!-- Installation Guide -->
     <url>
-        <loc>https://yourwebsite.com/installation-guide</loc>
+        <loc>https://inviloader.pro/installation-guide</loc>
         <lastmod>2025-01-29</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -27,7 +27,7 @@
 
     <!-- Screenshots Page -->
     <url>
-        <loc>https://yourwebsite.com/screenshots</loc>
+        <loc>https://inviloader.pro/screenshots</loc>
         <lastmod>2025-01-29</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
@@ -35,7 +35,7 @@
 
     <!-- Free Version Details -->
     <url>
-        <loc>https://yourwebsite.com/free-version</loc>
+        <loc>https://inviloader.pro/free-version</loc>
         <lastmod>2025-01-29</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
@@ -43,7 +43,7 @@
 
     <!-- Pro Version Details -->
     <url>
-        <loc>https://yourwebsite.com/pro-version</loc>
+        <loc>https://inviloader.pro/pro-version</loc>
         <lastmod>2025-01-29</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
@@ -51,7 +51,7 @@
 
     <!-- Contact Page -->
     <url>
-        <loc>https://yourwebsite.com/contact</loc>
+        <loc>https://inviloader.pro/contact</loc>
         <lastmod>2025-01-29</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
@@ -59,7 +59,7 @@
 
     <!-- Terms & Privacy Policy (If Exists) -->
     <url>
-        <loc>https://yourwebsite.com/privacy-policy</loc>
+        <loc>https://inviloader.pro/privacy-policy</loc>
         <lastmod>2025-01-29</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.5</priority>
