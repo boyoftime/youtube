@@ -4,618 +4,605 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Inviloader is a free and fast YouTube video downloader. Download YouTube videos in high quality easily with our online tool.">
-    <title>Inviloader - Download YouTube Videos</title>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="icon" href="favicon.png" type="image/x-icon"> <!-- Favicon -->
+    <title>Inviloader - Free YouTube Video Downloader</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.png" type="image/x-icon">
 
     <style>
+        /* Define CSS Variables */
+        :root {
+            --background-dark: #1b1b1b;
+            --background-medium: #2c2c2c;
+            --background-light: #111;
+            --text-primary: #e0e0e0;
+            --text-light: #f8f9fa;
+            --text-accent: #ffffff;
+            --accent-color: #6a0dad; /* Purple */
+            --accent-hover: #7323d0;
+            --link-color: #ffd700; /* Gold */
+            --border-color: #444;
+            --shadow-color: rgba(0, 0, 0, 0.2);
+            --font-family-base: 'Quicksand', sans-serif;
+        }
+
+        /* Base Styles */
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: 'Quicksand', sans-serif;
-            background-color: #1b1b1b;
-            color: #e0e0e0;
+            font-family: var(--font-family-base);
+            background-color: var(--background-dark);
+            color: var(--text-primary);
+            font-size: 1rem; /* Base font size */
+            line-height: 1.6;
         }
 
-        header {
-    background-image: url('background.webp'); /* Path to your background image */
-    background-size: cover; /* Ensures the image covers the entire header area */
-    background-position: center; /* Centers the image */
-    color: white;
-    padding: 20px;
-    text-align: center;
-}
-
-        header img {
-            max-width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            margin-bottom: 10px;
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--text-accent);
+            font-weight: 700; /* Use the bold weight from Google Fonts */
         }
 
-        .download-btn {
-            background-color: #6a0dad;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            display: inline-block;
+        /* Make base font size slightly larger on bigger screens */
+        @media (min-width: 768px) {
+            body {
+                font-size: 1.05rem;
+            }
         }
-
-        .download-btn:hover {
-            background-color: #7323d0;
-            text-decoration: none; /* Ensure underline does not appear */
+         @media (min-width: 992px) {
+            body {
+                font-size: 1.1rem;
+            }
         }
 
         a {
+            color: var(--text-light);
             text-decoration: none;
-            color: white;
+            transition: color 0.2s ease;
         }
 
         a:hover {
+            color: var(--accent-hover);
             text-decoration: underline;
+        }
+
+        img {
+            max-width: 100%; /* Make images responsive by default */
+            height: auto;
+            display: block; /* Prevents extra space below images */
+        }
+
+        /* Header Section */
+        .hero-header {
+            background-image: url('background.webp');
+            background-size: cover;
+            background-position: center;
+            color: var(--text-accent);
+            padding: 3rem 1rem; /* Use rem for padding */
+            text-align: center;
+        }
+
+        .hero-header img.logo {
+            max-width: 100px; /* Slightly smaller logo on small screens */
+            height: 100px;
+            border-radius: 50%;
+            margin: 0 auto 1rem; /* Center using auto margins */
+        }
+
+        .hero-header h1 {
+            font-size: clamp(2rem, 5vw, 3rem); /* Responsive font size */
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-header p {
+            font-size: clamp(1rem, 3vw, 1.25rem);
+            max-width: 600px; /* Limit description width */
+            margin: 0 auto;
+        }
+
+        @media (min-width: 768px) {
+            .hero-header {
+                padding: 4rem 1rem;
+            }
+             .hero-header img.logo {
+                max-width: 120px;
+                height: 120px;
+            }
+        }
+
+        /* Info Section (Get Started / Free Download) */
+        .info-section {
+            color: var(--text-light);
+        }
+
+        .info-box {
+            background-color: var(--background-medium);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 2rem; /* Consistent padding */
+            box-shadow: 0 4px 8px var(--shadow-color);
+            height: 100%; /* Make boxes same height using flex */
+            display: flex;
+            flex-direction: column;
+        }
+
+         .info-box h2 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+         }
+
+         .info-box ul {
+            padding-left: 1.5rem; /* Indent list */
+            margin-bottom: 1rem;
+         }
+         .info-box ul li {
+            margin-bottom: 0.5rem;
+            list-style: disc;
+         }
+
+        .free-download-content {
+            text-align: center;
+            flex-grow: 1; /* Allow content to take available space */
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Center content vertically */
+        }
+
+        .free-download-content .logo-img {
+            max-width: 180px; /* Control logo size */
+            margin: 1.5rem auto 1rem; /* Center logo */
+            animation: zoom-in-out 2s infinite ease-in-out;
+        }
+
+        .scroll-title {
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 1.2rem;
+            color: var(--text-light);
+            animation: fade-in 2s ease-in-out;
+        }
+
+        @keyframes zoom-in-out {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); } /* Slightly increase zoom */
+        }
+
+        @keyframes fade-in {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Download Button Styles */
+        .download-btn {
+            background-color: var(--accent-color);
+            color: var(--text-accent);
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            font-weight: 700;
+            display: inline-flex; /* Use flex for alignment */
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem; /* Space between icon and text */
+            text-decoration: none;
+            border: none; /* Remove default border */
+            cursor: pointer;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+            width: auto; /* Let content determine width */
+            text-align: center; /* Ensure text is centered if it wraps */
+        }
+
+        .download-btn:hover {
+            background-color: var(--accent-hover);
+            color: var(--text-accent); /* Ensure text remains white on hover */
+            text-decoration: none;
+            transform: translateY(-2px); /* Subtle lift effect */
+        }
+
+        .download-btn .button-icon {
+            width: 20px;
+            height: 20px;
+            /* display: inline-block; - Not needed with flex */
+            vertical-align: middle; /* Good fallback */
+        }
+
+        /* Software Info Table Section */
+        .software-info .table {
+            margin-bottom: 0; /* Remove default table margin if needed */
+            vertical-align: middle; /* Vertically align content in cells */
+        }
+
+        .software-info .table thead th {
+             background-color: var(--background-medium); /* Darker header for table */
+             border-color: var(--border-color);
+        }
+
+        .software-info .table td,
+        .software-info .table th {
+            border-color: var(--border-color); /* Match border color */
+        }
+
+        .software-info .list-unstyled li {
+            margin-bottom: 0.3rem;
+        }
+
+        /* Screenshots Section */
+        .screenshots {
+            background-color: var(--background-medium); /* Add subtle background */
+            padding-top: 3rem;
+            padding-bottom: 3rem;
+        }
+        .screenshots h2 {
+            margin-bottom: 2.5rem;
+        }
+        .screenshots .screenshot-item a {
+            display: block; /* Make the whole link area clickable */
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: transform 0.2s ease-in-out;
+        }
+         .screenshots .screenshot-item a:hover {
+             transform: scale(1.05); /* Zoom effect on hover */
+             text-decoration: none;
+         }
+
+        .screenshots .screenshot-item img {
+             /* Width is handled by Bootstrap columns */
+            border-radius: 5px;
+            box-shadow: 0 4px 8px var(--shadow-color);
+            margin-bottom: 1rem; /* Space below image */
+        }
+
+        .screenshots .screenshot-desc {
+            font-size: 0.9rem;
+            padding: 0 0.5rem; /* Add slight horizontal padding */
+        }
+
+        /* Installation Guide Section */
+        .installation-guide-container {
+            background-color: var(--background-medium);
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 4px 10px var(--shadow-color);
+            color: var(--text-light);
+        }
+
+        .installation-guide-container h2 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        .installation-guide-container h3 {
+             margin-top: 2rem;
+             margin-bottom: 0.5rem;
+             color: var(--text-light);
+             border-bottom: 1px solid var(--border-color);
+             padding-bottom: 0.5rem;
+        }
+
+         .installation-guide-container p {
+             color: var(--text-primary);
+             margin-bottom: 1rem;
+         }
+         .installation-guide-container p strong {
+             color: var(--text-light);
+         }
+
+        .installation-guide-container ol,
+        .installation-guide-container ul {
+            padding-left: 1.5rem; /* Consistent list padding */
+            margin-bottom: 1rem;
+        }
+        .installation-guide-container li {
+             margin-bottom: 0.5rem;
+        }
+
+        .installation-guide-container .os-installation {
+            margin-bottom: 2rem; /* Space between OS sections */
+        }
+
+        /* Center download buttons within the guide */
+        .installation-guide-container .download-buttons {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; /* Align buttons left by default */
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .installation-guide-container .download-btn {
+            margin-bottom: 0; /* Remove extra margin if using gap */
         }
 
         .youtube-link {
-            color: yellow;
+            color: var(--link-color) !important; /* Ensure gold color overrides default */
+            font-weight: 700;
+        }
+        .youtube-link:hover {
+            color: darken(var(--link-color), 10%) !important;
         }
 
-        .screenshots img {
-            width: 100%;
-            max-width: 300px;
-            margin: 10px auto;
-            border-radius: 5px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            transition: transform 0.2s ease-in-out;
-        }
 
-        .screenshots img:hover {
-            transform: scale(1.1); /* Zoom effect */
-        }
-
-        .screenshot-desc {
-            color: white;
-            margin-top: 5px;
-            font-size: 14px;
-        }
-
+        /* Footer Section */
         footer {
-            background-color: #111;
-            color: white;
+            background-color: var(--background-light);
+            color: var(--text-primary);
             text-align: center;
-            padding: 20px;
+            padding: 2rem 1rem;
+            margin-top: 3rem; /* Add space above footer */
         }
 
+        footer .contact-icons a {
+            color: var(--text-primary);
+            margin: 0 0.5rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            text-decoration: none;
+        }
         footer .contact-icons img {
-            width: 30px;
-            height: 30px;
+            width: 24px; /* Slightly smaller icons */
+            height: 24px;
+            vertical-align: middle;
+            display: inline-block; /* Keep icons inline */
         }
-
-        footer a:hover {
+        footer .contact-icons a:hover {
+            color: var(--text-light);
             text-decoration: underline;
         }
 
-
-        /* CSS for the Get Started Section */
-        .get-started {
-            background-color: #2c2c2c; /* Dark gray background */
-            border: 1px solid #444; /* Subtle border */
-            border-radius: 10px; /* Rounded corners */
-            padding: 30px; /* Inner padding for the content */
-            margin: 20px auto; /* Add margin for spacing */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
-            max-width: 800px; /* Limit the width for better readability */
-            color: #f8f9fa; /* Light text color for readability */
-            text-align: left; /* Align text to the left */
+        footer p {
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
         }
-
-        /* Heading styles for the section */
-        .get-started h2 {
-            text-align: center; /* Center-align the heading */
-            color: #ffffff; /* White color for the heading */
-            font-weight: bold; /* Bold text */
-            margin-bottom: 20px; /* Spacing below the heading */
+        footer p:last-child {
+             margin-bottom: 0;
         }
-
-        /* Paragraph styling */
-        .get-started p {
-            line-height: 1.6; /* Improve readability */
-            margin-bottom: 15px; /* Space between paragraphs */
-        }
-
-        /* List styles for advantages */
-        .get-started ul {
-            padding-left: 20px; /* Indent the list */
-        }
-
-        .get-started ul li {
-            margin-bottom: 10px; /* Space between list items */
-            list-style: disc; /* Standard bullet points */
-        }
-
-
- 
-
-        /* Parent container for horizontal alignment */
-.info-section .row {
-    display: flex; /* Use Flexbox for horizontal layout */
-    flex-wrap: nowrap; /* Prevent wrapping */
-    gap: 20px; /* Space between the boxes */
-}
-
-/* Style for the Get Started Box */
-.info-section .get-started {
-    flex: 1; /* Equal width for both boxes */
-    display: flex; /* Flexbox for content alignment */
-    flex-direction: column; /* Arrange content vertically */
-    justify-content: space-between; /* Space out content */
-    background-color: #2c2c2c; /* Dark background */
-    border: 1px solid #444; /* Subtle border */
-    border-radius: 10px; /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow */
-    color: #f8f9fa; /* Light text */
-    padding: 20px; /* Inner padding */
-    min-height: 400px; /* Ensures both boxes have the same height */
-}
-
-/* Style for the Free Download Section (No Box) */
-.info-section .free-download {
-    flex: 1; /* Same width as the Get Started box */
-    display: flex; /* Flexbox for content alignment */
-    flex-direction: column; /* Arrange content vertically */
-    justify-content: center; /* Center-align content */
-    padding: 20px; /* Inner padding */
-    color: #f8f9fa; /* Light text */
-}
-
-/* Heading styles */
-.info-section h2 {
-    text-align: center; /* Center-align heading */
-    color: #ffffff; /* White text for headings */
-    font-weight: bold; /* Make headings bold */
-    margin-bottom: 20px; /* Spacing below heading */
-}
-
-/* Paragraph and list styles */
-.info-section p,
-.info-section ul {
-    line-height: 1.6; /* Improve readability */
-    margin-bottom: 15px; /* Space between paragraphs and lists */
-}
-
-/* Logo styles with animation */
-.free-download .logo-container {
-    text-align: center; /* Center the logo */
-    margin-top: 20px; /* Add spacing above the logo */
-}
-
-/* Logo styles with increased size and animation */
-.free-download .logo-img {
-    max-width: 150%; /* Increase maximum width */
-    max-height: 200px; /* Increase maximum height */
-    animation: zoom-in-out 2s infinite; /* Apply smooth animation */
-}
-
-/* Zoom-in-out animation keyframes */
-@keyframes zoom-in-out {
-    0%, 100% {
-        transform: scale(1); /* Normal size */
-    }
-    50% {
-        transform: scale(1.2); /* Larger zoom (from 1.1 to 1.2) */
-    }
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .info-section .row {
-        flex-wrap: wrap; /* Stack boxes vertically on smaller screens */
-    }
-
-    .info-section .get-started,
-    .info-section .free-download {
-        min-height: auto; /* Remove fixed height on smaller screens */
-    }
-}
-
-/* Title below the logo */
-.scroll-title {
-    text-align: center; /* Center-align the text */
-    margin-top: 15px; /* Add space between the logo and the title */
-    font-size: 1.2rem; /* Set a slightly larger font size */
-    color: #f8f9fa; /* Light text color */
-    animation: fade-in 2s ease-in-out; /* Add a subtle fade-in effect */
-}
-
-/* Fade-in animation for the title */
-@keyframes fade-in {
-    0% {
-        opacity: 0; /* Start invisible */
-    }
-    100% {
-        opacity: 1; /* Fully visible */
-    }
-}
-
-
-/* Styling for download buttons */
-.download-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 10px; /* Space between buttons */
-    margin: 15px 0;
-    align-items: center; /* Center-align buttons */
-}
-
-.download-btn {
-    background-color: #6a0dad; /* Background color */
-    color: white; /* Text color */
-    padding: 10px 20px; /* Inner padding */
-    border-radius: 5px; /* Rounded corners */
-    text-decoration: none; /* Remove underline */
-    font-weight: bold; /* Bold text */
-    display: flex; /* Flex for centering content */
-    align-items: center; /* Vertically center icon and text */
-    justify-content: center; /* Horizontally center icon and text */
-    gap: 10px; /* Space between icon and text */
-    width: fit-content; /* Ensure the button fits content */
-}
-
-
-.download-btn:hover {
-    background-color: #7323d0;
-    text-decoration: none;
-}
-
-/* Styling for icons in buttons */
-.button-icon {
-    width: 20px; /* Icon width */
-    height: 20px; /* Icon height */
-}
-
-
-/* Container for the Installation Guide */
-.installation-guide-container {
-    background-color: #2c2f38; /* Background color of the box */
-    border-radius: 10px; /* Rounded corners */
-    padding: 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Soft shadow */
-    margin-top: 20px;
-    text-align: center; /* Center all text inside the box */
-}
-
-/* Styling for the Installation Guide Box */
-.installation-guide-box h2 {
-    font-size: 2rem;
-    color: #f8f9fa; /* Light text color */
-    margin-bottom: 15px;
-}
-
-.installation-guide-box p {
-    font-size: 1rem;
-    color: #d1d1d1; /* Slightly dimmed text color */
-    margin-bottom: 15px;
-}
-
-.installation-guide-box ol {
-    padding-left: 20px;
-    list-style-position: inside; /* Keep list bullets inside the box */
-    margin-bottom: 20px;
-}
-
-.installation-guide-box .download-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 10px; /* Space between buttons */
-    margin: 15px 0;
-    align-items: center; /* Center the buttons horizontally */
-}
-
-.installation-guide-box .download-btn {
-    background-color: #6a0dad; /* Button background color */
-    color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    gap: 10px; /* Space between icon and text */
-    justify-content: center; /* Ensure the icon and text are centered */
-}
-
-.installation-guide-box .download-btn:hover {
-    background-color: #7323d0;
-    text-decoration: none;
-}
-
-.installation-guide-box .button-icon {
-    width: 20px; /* Icon width */
-    height: 20px; /* Icon height */
-}
-
-/* Link in the tutorial section */
-.installation-guide-box .youtube-link {
-    color: #ffd700; /* Gold color for the tutorial link */
-}
-
-.installation-guide-box .youtube-link:hover {
-    text-decoration: underline;
-}
-
-
 
     </style>
 </head>
 <body>
-    <header>
-        <img src="inviloader.png" alt="Inviloader Logo">
+    <!-- Header -->
+    <header class="hero-header">
+        <img src="inviloader.png" alt="Inviloader Logo" class="logo">
         <h1>Welcome to Inviloader</h1>
         <p>Your powerful tool to download YouTube videos with ease</p>
     </header>
 
+    <!-- Info Section -->
     <section class="info-section container py-5">
-        <div class="row">
+        <!-- Use gy-4 for vertical gap between rows on stacked view -->
+        <div class="row gy-4 d-flex align-items-stretch">
             <!-- Get Started Box -->
-            <div class="col-md-6">
-                <div class="get-started py-4 px-3">
+            <div class="col-lg-6">
+                <div class="info-box">
                     <h2>Get Started with Inviloader</h2>
-                    <p>Inviloader is a revolutionary tool that allows you to download YouTube videos directly to your PC using a simple CMD command. Whether you want to save videos for offline viewing, backup content, or repurpose videos for personal use, Inviloader makes it fast and efficient.</p>
-                    <p>The program works by integrating with FFmpeg, a powerful multimedia framework, to handle video and audio processing. Once set up, you can simply enter a YouTube video link into the command line, and Inviloader will take care of the rest.</p>
-                    <p>Advantages of using Inviloader include:</p>
+                    <p>Inviloader is a revolutionary tool allowing you to download YouTube videos directly to your PC using a simple CMD command. Save videos for offline viewing, backup content, or repurpose for personal use - fast and efficiently.</p>
+                    <p>The program works by integrating with FFmpeg, a powerful multimedia framework, to handle video and audio processing. Simply enter a YouTube video link into the command line, and Inviloader does the rest.</p>
+                    <p><strong>Advantages:</strong></p>
                     <ul>
-                        <li>Fast downloads with minimal system requirements.</li>
-                        <li>Support for multiple video resolutions and formats.</li>
-                        <li>Simple and user-friendly command-line interface.</li>
-                        <li>Free version with robust features, and a premium version with advanced tools.</li>
+                        <li>Fast downloads, minimal system requirements.</li>
+                        <li>Supports multiple video resolutions and formats.</li>
+                        <li>Simple, user-friendly command-line interface.</li>
+                        <li>Free version with robust features.</li>
                     </ul>
                 </div>
             </div>
-    
-            <!-- Free to Download Box -->
-            <div class="col-md-6">
-                <div class="free-download py-4 px-3">
-                    <h2>It's Free to Download Inviloader</h2>
-                    <p>Inviloader is available for free to everyone! Experience all the core features without any cost, and enjoy a smooth, seamless downloading experience.</p>
-                    <p>Looking for advanced features like batch downloads and faster speeds? Check out our premium version, Inviloader Pro, for even more power.</p>
-                    <div class="logo-container text-center mt-3">
-                        <img src="inviloader-trans.png" alt="Inviloader Logo" class="logo-img">
-                        <div class="logo-container">
-                            <h3 class="scroll-title">Scroll down to download Inviloader</h3>
-                        </div>
-                        
+
+            <!-- Free Download Box -->
+            <div class="col-lg-6">
+                <div class="info-box">
+                     <h2>It's Free to Download!</h2>
+                    <div class="free-download-content">
+                        <p>Inviloader is available for free! Experience all core features without cost and enjoy a smooth downloading experience.</p>
+                        <p>Looking for advanced features like batch downloads and faster speeds? Check out Inviloader Pro (coming soon!).</p>
+                        <img src="inviloader-trans.png" alt="Inviloader Transparent Logo" class="logo-img">
+                        <h3 class="scroll-title">Scroll down to download Inviloader</h3>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Software Info Table Section -->
     <section class="software-info container py-5">
-        <h2 class="text-center mb-4">Free Version</h2>
+        <h2 class="text-center mb-4">Free Version Download</h2>
         <div class="table-responsive">
-            <table class="table table-dark table-bordered text-center">
+            <table class="table table-dark table-bordered text-center align-middle">
                 <thead>
                     <tr>
                         <th>Version</th>
                         <th>Size</th>
                         <th>Release Date</th>
                         <th>Version Code</th>
-                        <th>Features</th>
+                        <th class="text-start">Features</th>
                         <th>Download</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Row for Version 7.0 -->
                     <tr>
-                        <td>Inviloader Version 7.0 (x64) <strong><br>Only for Windows</br></strong></td> 
+                        <td>Inviloader v7.5 (x64)<br><strong>Windows Only</strong></td>
+                        <td>20.4MB</td>
+                        <td>28 March 2025</td> <!-- Note: Future Date? -->
+                        <td>7.5</td>
+                        <td class="text-start">
+                            <ul class="list-unstyled mb-0">
+                                <li>✔️ Download videos with higher resolution up to 4k</li>
+                                <li>✔️ Download High Quality Audio</li>
+                                <li>✔️ Moderate/Normal download speed</li>
+                                <li>✔️ Supports most YouTube videos & shorts<br><small>(Age-restricted may require sign-in)</small></li>
+                                <li>✔️ No installer required executable runs directly</li>
+                                <li>✔️ Fast and optimized</li><br><br>
+                            </ul>
+                        </td>
+                        <td>
+                            <a href="Inviloader_v7.5.zip" class="download-btn" download>
+                                <img src="windows.png" alt="" class="button-icon"> <!-- Alt text can be empty if icon is purely decorative -->
+                                Download Now (v7.5)
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Inviloader v7.0 (x64)<br><strong>Windows Only</strong></td>
                         <td>22.5MB</td>
-                        <td>25 January 2025</td>
+                        <td>25 January 2025</td> <!-- Note: Future Date? -->
                         <td>7.0</td>
                         <td class="text-start">
                             <ul class="list-unstyled mb-0">
-                                <li>&#8226; Download videos up to 1080p high HD quality ✔️</li>
-                                <li>&#8226; Download Audio from video with Highy Quality ✔️</li>
-                                <li>&#8226; Download speed is moderate/normal ✔️</li>
-                                <li>&#8226; Supports all YouTube videos and shorts<br>except Age-restricted videos which may need you to sign in. ✔️</br></li>
+                                <li>✔️ Download videos up to 1080p HD</li>
+                                <li>✔️ Download High Quality Audio</li>
+                                <li>✔️ Moderate/Normal download speed</li>
+                                <li>✔️ Supports most YouTube videos & shorts<br><small>(Age-restricted may require sign-in)</small></li>
                             </ul>
                         </td>
-                        <td style="text-align: center; vertical-align: middle;">
-                            <a href="inviloader_v7.0.iso" class="download-btn" style="display: inline-block;" download>
-                                <img src="windows.png" alt="Download Icon" style="width: 20px; height: 20px; margin-right: 5px;">
-                                Download Now (x64)
+                        <td>
+                            <a href="inviloader_v7.0.iso" class="download-btn" download>
+                                <img src="windows.png" alt="" class="button-icon"> <!-- Alt text can be empty if icon is purely decorative -->
+                                Download Now (v7.0)
                             </a>
                         </td>
                     </tr>
-                    <!-- Add new rows below by copying and pasting this structure copy <tr>  </tr> block --> 
-                    <!-- Example row for another version -->
-                </tbody>
-            </table>
-        </div>
-    
-        <h2 class="text-center mb-4">Pro Version</h2>
-        <div class="table-responsive">
-            <table class="table table-dark table-bordered text-center">
-                <thead>
-                    <tr>
-                        <th>Version</th>
-                        <th>Size</th>
-                        <th>Release Date</th>
-                        <th>Version Code</th>
-                        <th>Features</th>
-                        <th>Download</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Row for Paid Version -->
-                    <tr>
-                        <td>Inviloader Pro</td>
-                        <td>----</td>
-                        <td>----</td>
-                        <td>----</td>
-                        <td class="text-start">
-                            <ul class="list-unstyled mb-0">
-                                <li>&#8226; ----</li>
-                        
-                            </ul>
-                        </td>
-                        <td style="text-align: center; vertical-align: middle;">
-                            <!-- <a href="inviloader_plus.exe" class="download-btn" style="display: inline-block;" download> -->
-                                <img src="windows.png" alt="Download Icon" style="width: 20px; height: 20px; margin-right: 5px;">
-                                Coming soon......
-                            </a>
-                        </td>
-                    </tr>
-                    <!-- Add new rows below by copying and pasting this structure -->
+                    <!-- Add more versions here if needed -->
                 </tbody>
             </table>
         </div>
     </section>
 
+    <!-- Screenshots Section -->
     <section class="screenshots text-center py-5">
-        <h2>Just how it works!</h2>
-        <div class="row justify-content-center">
-            <div class="col-md-3">
-                <a href="pic1.jpg" target="_blank">
-                    <img src="pic1.jpg" alt="Screenshot 1">
-                    <p class="screenshot-desc">User-friendly interface, You just choose from two options either to download Video or Audio. Choose by just enter "1" for Video option or "2" for Audio option.</p>
-                </a>
-            </div>
-            <div class="col-md-3">
-                <a href="pic2.jpg" target="_blank">
-                    <img src="pic2.jpg" alt="Screenshot 2">
-                    <p class="screenshot-desc">For video option, with free version you have ability to download videos up to 1080p HD High quality. just choose any video quality you want to download and hit enter button to proceed, Inviloader will finish the process automatically and save your video to your computer</p>
-                </a>
-            </div>
-            <div class="col-md-3">
-                <a href="pic3.jpg" target="_blank">
-                    <img src="pic3.jpg" alt="Screenshot 3">
-                    <p class="screenshot-desc">Inviloader will save your files in the Downloads directory under "Inviloader output" folder. This folder will be created by Inviloader automatically to save your files</p>
-                </a>
-            </div>
-            <div class="col-md-3">
-                <a href="pic4.jpg" target="_blank">
-                    <img src="pic4.jpg" alt="Screenshot 4">
-                    <p class="screenshot-desc">When downloading Audio from youtube with inviloader makes it more simple. Just choose Audio option and paste the youtube link. then inviloader will finish the job immediately</p>
-                </a>
+        <div class="container">
+             <h2 class="mb-5">How It Works!</h2>
+             <!-- Adjust columns for different screen sizes: 1 on xs, 2 on sm, 4 on lg -->
+            <div class="row gy-4 gx-lg-4 justify-content-center">
+                <div class="col-10 col-sm-6 col-lg-3 screenshot-item">
+                    <a href="pic1.jpg" target="_blank" title="View Screenshot 1 Larger">
+                        <img src="pic1.jpg" alt="Inviloader main menu: Choose Video or Audio" loading="lazy">
+                        <p class="screenshot-desc">User-friendly menu: Choose '1' for Video or '2' for Audio.</p>
+                    </a>
+                </div>
+                <div class="col-10 col-sm-6 col-lg-3 screenshot-item">
+                    <a href="pic2.jpg" target="_blank" title="View Screenshot 2 Larger">
+                        <img src="pic2.jpg" alt="Inviloader video download quality selection" loading="lazy">
+                        <p class="screenshot-desc">Select video quality up to 1080p HD. Inviloader handles the download automatically.</p>
+                    </a>
+                </div>
+                <div class="col-10 col-sm-6 col-lg-3 screenshot-item">
+                    <a href="pic3.jpg" target="_blank" title="View Screenshot 3 Larger">
+                        <img src="pic3.jpg" alt="Inviloader output folder in Downloads directory" loading="lazy">
+                        <p class="screenshot-desc">Files are saved automatically in your 'Downloads/Inviloader output' folder.</p>
+                    </a>
+                </div>
+                <div class="col-10 col-sm-6 col-lg-3 screenshot-item">
+                    <a href="pic4.jpg" target="_blank" title="View Screenshot 4 Larger">
+                        <img src="pic4.jpg" alt="Inviloader audio download process" loading="lazy">
+                        <p class="screenshot-desc">Downloading audio is simple: Choose the audio option and paste the YouTube link.</p>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="installation-guide-container py-5">
-        <div class="installation-guide-box" style="text-align: left;">
-            <h2>Installation Guide</h2>
-            <p>Inviloader needs "FFmpeg" in order to extract or merge video and audio files before saving them to your computer.</p>
-            <p>FFmpeg is a command-line tool used for processing video and audio files. It is widely used for video transcoding, basic editing (trimming and concatenation), video scaling, and video post-production effects.</p>
-            <p style="font-size: 20px; text-decoration: underline;"><strong>Follow the steps below to install FFmpeg for your operating system:</strong></p>
-    
+    <!-- Installation Guide Section -->
+    <section class="container py-5">
+        <div class="installation-guide-container">
+            <h2>Installation Guide: FFmpeg</h2>
+            <p class="text-center lead mb-4">Inviloader requires <strong>FFmpeg</strong> to process video and audio. Follow these steps to install it.</p>
+
             <!-- Windows Installation -->
             <div class="os-installation">
-                <h3>For Windows</h3>
-                <hr>
-                <p><strong>Step 1:</strong> Download FFmpeg for Windows:</p>
-                <a href="ffmpeg-windows.7z" class="download-btn" download style="display: inline-block; margin-bottom: 15px;">
-                    <img src="windows.png" alt="Windows Icon" class="button-icon"> Download FFmpeg for Windows
-                </a>
+                <h3><img src="windows.png" alt="" class="button-icon me-2">For Windows</h3>
+                <p><strong>Step 1: Download & Extract FFmpeg</strong></p>
+                <div class="download-buttons">
+                     <a href="ffmpeg-windows.7z" class="download-btn" download>
+                        <img src="windows.png" alt="" class="button-icon"> Download FFmpeg for Windows
+                    </a>
+                </div>
                 <ol>
-                    <li>Extract the downloaded ZIP file to a folder, such as <code>C:\ffmpeg</code>.</li>
-                    <li>Locate the <code>bin</code> directory inside the extracted folder (e.g., <code>C:\ffmpeg\bin</code>).</li>
-                    <li>Add FFmpeg to your system's PATH:
+                    <li>Extract the downloaded file (e.g., using 7-Zip) to a permanent location, like <code>C:\ffmpeg</code>.</li>
+                    <li>Find the <code>bin</code> folder inside (e.g., <code>C:\ffmpeg\bin</code>).</li>
+                    <li><strong>Add FFmpeg to your system's PATH:</strong>
                         <ul>
-                            <li>Open the Start menu and search for <b>Environment Variables</b>.</li>
-                            <li>Click on <b>Edit the system environment variables</b>.</li>
-                            <li>In the <b>System Properties</b> window, click <b>Environment Variables</b>.</li>
-                            <li>Under <b>System Variables</b>, find the <code>Path</code> variable and click <b>Edit</b>.</li>
-                            <li>Click <b>New</b>, and add the path to the <code>bin</code> folder of FFmpeg (e.g., <code>C:\ffmpeg\bin</code>).</li>
-                            <li>Click <b>OK</b> to save and close all windows.</li>
+                            <li>Search for "Environment Variables" in the Start menu and open "Edit the system environment variables".</li>
+                            <li>Click "Environment Variables...".</li>
+                            <li>Under "System variables", select "Path" and click "Edit...".</li>
+                            <li>Click "New" and paste the full path to the <code>bin</code> folder (e.g., <code>C:\ffmpeg\bin</code>).</li>
+                            <li>Click OK on all windows to save.</li>
                         </ul>
                     </li>
-                    <li>Verify Installation:
-                        <ul>
-                            <li>Open a new Command Prompt window and type: <code>ffmpeg -version</code>.</li>
-                            <li>If FFmpeg is installed correctly, you will see its version and configuration details.</li>
-                        </ul>
-                    </li>
+                    <li><strong>Verify Installation:</strong> Open a <strong>new</strong> Command Prompt or PowerShell window and type <code>ffmpeg -version</code>. You should see FFmpeg details.</li>
                 </ol>
             </div>
-    
+
             <!-- macOS Installation -->
             <div class="os-installation">
-                <h3>For macOS</h3>
-                <hr>
-                <p><strong>Step 1:</strong> Download FFmpeg for macOS:</p>
-                <a href="ffmpeg-mac-os.zip" class="download-btn" download style="display: inline-block; margin-bottom: 15px;">
-                    <img src="mac-os.png" alt="Mac Icon" class="button-icon"> Download FFmpeg for macOS
-                </a>
-                <ol>
-                    <li>Install Homebrew if it's not already installed:
-                        <code>/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</code>
-                    </li>
-                    <li>Install FFmpeg using Homebrew:
-                        <code>brew install ffmpeg</code>
-                    </li>
-                    <li>If downloading manually, extract FFmpeg to a folder (e.g., <code>~/ffmpeg</code>) and add it to your PATH:
-                        <code>echo 'export PATH="$PATH:$HOME/ffmpeg/bin"' >> ~/.zshrc && source ~/.zshrc</code>
-                    </li>
-                    <li>Verify Installation:
-                        <ul>
-                            <li>Open a terminal and type: <code>ffmpeg -version</code>.</li>
-                            <li>If FFmpeg is installed correctly, you will see its version and configuration details.</li>
-                        </ul>
-                    </li>
-                </ol>
+                <h3><img src="mac-os.png" alt="" class="button-icon me-2">For macOS</h3>
+                 <p><strong>Option 1: Using Homebrew (Recommended)</strong></p>
+                 <ol>
+                     <li>Install Homebrew if you don't have it. Open Terminal and run: <br><code>/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</code></li>
+                     <li>Install FFmpeg: <code>brew install ffmpeg</code></li>
+                 </ol>
+                 <p><strong>Option 2: Manual Download</strong></p>
+                 <div class="download-buttons">
+                     <a href="ffmpeg-mac-os.zip" class="download-btn" download>
+                        <img src="mac-os.png" alt="" class="button-icon"> Download FFmpeg for macOS
+                    </a>
+                 </div>
+                 <ol>
+                     <li>Extract the downloaded file to a location like <code>~/ffmpeg</code>.</li>
+                     <li>Add to PATH (adjust based on your shell, usually zsh):<br><code>echo 'export PATH="$HOME/ffmpeg/bin:$PATH"' >> ~/.zshrc && source ~/.zshrc</code></li>
+                 </ol>
+                 <p><strong>Verify Installation:</strong> Open a <strong>new</strong> Terminal window and type <code>ffmpeg -version</code>.</p>
             </div>
-    
+
             <!-- Linux Installation -->
             <div class="os-installation">
-                <h3>For Linux</h3>
-                <hr>
-                <p><strong>Step 1:</strong> Download FFmpeg for Linux:</p>
-                <a  class="download-btn" download style="display: inline-block; margin-bottom: 15px;"> 
-                    <img src="linux.png" alt="Linux Icon" class="button-icon"> We will upload it soon!
-                </a>
+                <h3><img src="linux.png" alt="" class="button-icon me-2">For Linux</h3>
+                <p><strong>Option 1: Using Package Manager (Recommended)</strong></p>
                 <ol>
-                    <li>For Ubuntu/Debian-based distributions:
-                        <code>sudo apt update && sudo apt install ffmpeg</code>
-                    </li>
-                    <li>For Fedora-based distributions:
-                        <code>sudo dnf install ffmpeg</code>
-                    </li>
-                    <li>For Arch-based distributions:
-                        <code>sudo pacman -S ffmpeg</code>
-                    </li>
-                    <li>If downloading manually, extract FFmpeg and add it to your PATH:
-                        <code>echo 'export PATH="$PATH:/path/to/ffmpeg/bin"' >> ~/.bashrc && source ~/.bashrc</code>
-                    </li>
-                    <li>Verify Installation:
-                        <ul>
-                            <li>Open a terminal and type: <code>ffmpeg -version</code>.</li>
-                            <li>If FFmpeg is installed correctly, you will see its version and configuration details.</li>
-                        </ul>
-                    </li>
+                    <li><strong>Ubuntu/Debian:</strong> <code>sudo apt update && sudo apt install ffmpeg</code></li>
+                    <li><strong>Fedora:</strong> <code>sudo dnf install ffmpeg</code></li>
+                    <li><strong>Arch Linux:</strong> <code>sudo pacman -S ffmpeg</code></li>
                 </ol>
+                 <p><strong>Option 2: Manual Download (Link coming soon)</strong></p>
+                 <div class="download-buttons">
+                    <button class="download-btn" disabled> <!-- Use disabled button -->
+                        <img src="linux.png" alt="" class="button-icon"> Linux Download Coming Soon!
+                    </button>
+                 </div>
+                 <ol>
+                     <li>Extract FFmpeg to a location like <code>~/ffmpeg</code>.</li>
+                     <li>Add to PATH (adjust based on your shell, usually bash):<br><code>echo 'export PATH="$HOME/ffmpeg/bin:$PATH"' >> ~/.bashrc && source ~/.bashrc</code></li>
+                 </ol>
+                <p><strong>Verify Installation:</strong> Open a <strong>new</strong> terminal window and type <code>ffmpeg -version</code>.</p>
             </div>
-    
-            <p>Need more help? <a href="https://youtu.be/vdOUTpoeAPc?si=ytZGyJkcNPTdKiMm" target="_blank" class="youtube-link">Click here to view a tutorial on YouTube</a>.</p>
+
+            <p class="text-center mt-4">Need more help? <a href="https://youtu.be/vdOUTpoeAPc?si=ytZGyJkcNPTdKiMm" target="_blank" rel="noopener noreferrer" class="youtube-link">Watch our video tutorial on YouTube</a>.</p>
         </div>
     </section>
-    
-    
 
-    <footer>
-        <div class="contact-icons mb-3">
-            <a href="https://wa.me/message/ASEANRX2H5WQI1" target="_blank">
-                <img src="whatsapp.png" alt="WhatsApp Icon">
-                Contact me on WhatsApp |
-            </a>
-            <a href="https://t.me/inviloader" target="_blank" class="telegram">
-                <img src="telegram.png" alt="Telegram Icon">
-                Contact me on Telegram
-            </a>
+    <!-- Footer -->
+    <footer class="mt-5">
+        <div class="container">
+            <div class="contact-icons mb-3">
+                <a href="https://wa.me/message/ASEANRX2H5WQI1" target="_blank" rel="noopener noreferrer">
+                    <img src="whatsapp.png" alt="WhatsApp"> WhatsApp
+                </a> |
+                <a href="https://t.me/inviloader" target="_blank" rel="noopener noreferrer">
+                    <img src="telegram.png" alt="Telegram"> Telegram
+                </a>
+            </div>
+            <p>© 2024-2025 Inviloader. All rights reserved.</p> <!-- Corrected Year -->
+            <p>Developed by Someless. Consider supporting if you like the software!</p>
         </div>
-        <p>&copy; 2025 Inviloader. All rights reserved.</p>
-        <p>Developed and maintained by Someless | You may support me if you like the software </p>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </body>
 </html>
