@@ -210,7 +210,6 @@
         .download-btn .button-icon {
             width: 20px;
             height: 20px;
-            /* display: inline-block; - Not needed with flex */
             vertical-align: middle; /* Good fallback */
         }
 
@@ -255,7 +254,6 @@
          }
 
         .screenshots .screenshot-item img {
-             /* Width is handled by Bootstrap columns */
             border-radius: 5px;
             box-shadow: 0 4px 8px var(--shadow-color);
             margin-bottom: 1rem; /* Space below image */
@@ -266,67 +264,132 @@
             padding: 0 0.5rem; /* Add slight horizontal padding */
         }
 
-        /* Installation Guide Section */
+        /* --- Installation Guide Section Styles --- */
         .installation-guide-container {
-            background-color: var(--background-medium);
+            background-color: var(--background-medium); /* Keep existing background */
             border-radius: 10px;
-            padding: 2rem;
-            box-shadow: 0 4px 10px var(--shadow-color);
+            padding: 2rem; /* Keep padding */
+            box-shadow: 0 4px 10px var(--shadow-color); /* Keep shadow */
             color: var(--text-light);
         }
 
-        .installation-guide-container h2 {
+        .installation-guide-container h2.display-6 { /* Target the specific h2 */
             text-align: center;
+            margin-bottom: 1rem; /* Reduced margin slightly */
+        }
+
+        .installation-guide-container .lead {
+            color: var(--text-primary);
+            margin-bottom: 2.5rem; /* More space after intro */
+        }
+
+        /* Style for each OS card */
+        .os-guide-card {
+            background-color: #3a3f4c; /* Slightly different background for contrast */
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            height: 100%; /* Ensure cards in a row have the same height */
+            display: flex; /* Flex column to push footer content down if needed */
+            flex-direction: column;
+        }
+
+        .os-guide-card h3 {
+            display: flex;
+            align-items: center; /* Vertically align icon and text */
+            font-size: 1.5rem; /* Slightly larger heading */
             margin-bottom: 1.5rem;
-        }
-        .installation-guide-container h3 {
-             margin-top: 2rem;
-             margin-bottom: 0.5rem;
-             color: var(--text-light);
-             border-bottom: 1px solid var(--border-color);
-             padding-bottom: 0.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--border-color);
         }
 
-         .installation-guide-container p {
-             color: var(--text-primary);
-             margin-bottom: 1rem;
-         }
-         .installation-guide-container p strong {
-             color: var(--text-light);
-         }
+        /* Consistent OS Icon styling */
+        .os-icon {
+            width: 28px;  /* Adjust as needed */
+            height: 28px;
+            margin-right: 0.75rem; /* Space between icon and text */
+            flex-shrink: 0; /* Prevent icon from shrinking */
+        }
 
-        .installation-guide-container ol,
-        .installation-guide-container ul {
-            padding-left: 1.5rem; /* Consistent list padding */
+        .os-guide-card p,
+        .os-guide-card li {
+            color: var(--text-primary); /* Lighter text for readability */
+            font-size: 0.95rem; /* Adjust as needed */
+        }
+        .os-guide-card p strong {
+            color: var(--text-light);
+        }
+
+        .os-guide-card ol,
+        .os-guide-card ul {
+            padding-left: 1.25rem; /* Adjust list indent */
             margin-bottom: 1rem;
         }
-        .installation-guide-container li {
-             margin-bottom: 0.5rem;
+        .os-guide-card ul ul {
+            margin-top: 0.5rem; /* Space above nested lists */
+            margin-bottom: 0.5rem;
         }
 
-        .installation-guide-container .os-installation {
-            margin-bottom: 2rem; /* Space between OS sections */
+        .os-guide-card li {
+            margin-bottom: 0.5rem;
         }
 
-        /* Center download buttons within the guide */
-        .installation-guide-container .download-buttons {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start; /* Align buttons left by default */
-            gap: 1rem;
-            margin: 1rem 0;
+        /* Styling for code elements */
+        .os-guide-card code {
+            background-color: var(--background-dark); /* Darker background for code */
+            color: #f0ad4e; /* Example: Amber color for code */
+            padding: 0.2em 0.5em;
+            border-radius: 4px;
+            font-size: 0.85em;
+            word-break: break-all; /* Prevent long code lines from overflowing */
         }
-        .installation-guide-container .download-btn {
-            margin-bottom: 0; /* Remove extra margin if using gap */
+        .os-guide-card ol code,
+        .os-guide-card ul code {
+            display: inline-block; /* Make code block behave slightly better */
+            margin-top: 0.25rem;
         }
 
-        .youtube-link {
-            color: var(--link-color) !important; /* Ensure gold color overrides default */
+        /* Make download buttons slightly smaller maybe */
+        .os-guide-card .download-btn {
+            padding: 0.6rem 1.2rem;
+            font-size: 0.9rem;
+            width: 100%; /* Make buttons full width within their container */
+            margin-bottom: 1rem;
+        }
+        .os-guide-card .download-buttons {
+            margin-top: 1rem;
+            margin-bottom: 1rem; /* Reset default */
+            padding: 0; /* Reset default */
+        }
+
+        /* Separate sections within a card */
+        .method-separator {
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-top: 1px dashed var(--border-color); /* Dashed line separator */
+        }
+
+        .verification-step {
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color); /* Solid line before verification */
+            font-size: 0.9rem;
+        }
+        .verification-step code {
+            color: #5cb85c; /* Green for verification command example */
+        }
+
+        /* Final Help Link */
+        .youtube-help-link {
+            color: var(--link-color) !important; /* Ensure gold color */
             font-weight: 700;
+            text-decoration: underline;
         }
-        .youtube-link:hover {
+        .youtube-help-link:hover {
             color: darken(var(--link-color), 10%) !important;
         }
+
+        /* --- End Installation Guide Section Styles --- */
 
 
         /* Footer Section */
@@ -426,7 +489,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                     <tr>
                         <td>Inviloader v7.5 (x64)<br><strong>Windows Only</strong></td>
                         <td>20.4MB</td>
                         <td>28 March 2025</td> <!-- Note: Future Date? -->
@@ -443,7 +506,7 @@
                         </td>
                         <td>
                             <a href="Inviloader_v7.5.zip" class="download-btn" download>
-                                <img src="windows.png" alt="" class="button-icon"> <!-- Alt text can be empty if icon is purely decorative -->
+                                <img src="windows.png" alt="" class="button-icon">
                                 Download Now (v7.5)
                             </a>
                         </td>
@@ -463,7 +526,7 @@
                         </td>
                         <td>
                             <a href="inviloader_v7.0.iso" class="download-btn" download>
-                                <img src="windows.png" alt="" class="button-icon"> <!-- Alt text can be empty if icon is purely decorative -->
+                                <img src="windows.png" alt="" class="button-icon">
                                 Download Now (v7.0)
                             </a>
                         </td>
@@ -489,7 +552,7 @@
                 <div class="col-10 col-sm-6 col-lg-3 screenshot-item">
                     <a href="pic2.jpg" target="_blank" title="View Screenshot 2 Larger">
                         <img src="pic2.jpg" alt="Inviloader video download quality selection" loading="lazy">
-                        <p class="screenshot-desc">Select video quality up to 1080p HD. Inviloader handles the download automatically.</p>
+                        <p class="screenshot-desc">Select video quality up to 4K. Inviloader handles the download automatically.</p> <!-- Updated description for 4k -->
                     </a>
                 </div>
                 <div class="col-10 col-sm-6 col-lg-3 screenshot-item">
@@ -511,80 +574,110 @@
     <!-- Installation Guide Section -->
     <section class="container py-5">
         <div class="installation-guide-container">
-            <h2>Installation Guide: FFmpeg</h2>
-            <p class="text-center lead mb-4">Inviloader requires <strong>FFmpeg</strong> to process video and audio. Follow these steps to install it.</p>
+            <h2 class="display-6 fw-bold">FFmpeg Installation Guide</h2> <!-- Using Bootstrap display class -->
+            <p class="text-center lead mb-5">Inviloader requires <strong>FFmpeg</strong> to process video and audio. Choose your OS below and follow the steps.</p>
 
-            <!-- Windows Installation -->
-            <div class="os-installation">
-                <h3><img src="windows.png" alt="" class="button-icon me-2">For Windows</h3>
-                <p><strong>Step 1: Download & Extract FFmpeg</strong></p>
-                <div class="download-buttons">
-                     <a href="ffmpeg-windows.7z" class="download-btn" download>
-                        <img src="windows.png" alt="" class="button-icon"> Download FFmpeg for Windows
-                    </a>
-                </div>
-                <ol>
-                    <li>Extract the downloaded file (e.g., using 7-Zip) to a permanent location, like <code>C:\ffmpeg</code>.</li>
-                    <li>Find the <code>bin</code> folder inside (e.g., <code>C:\ffmpeg\bin</code>).</li>
-                    <li><strong>Add FFmpeg to your system's PATH:</strong>
+            <!-- Row to hold the OS guide cards -->
+            <!-- g-4 adds gap between columns, align-items-stretch makes columns same height -->
+            <div class="row g-4 align-items-stretch">
+
+                <!-- Windows Card -->
+                <div class="col-lg-4">
+                    <div class="os-guide-card">
+                        <h3><img src="windows.png" alt="Windows Logo" class="os-icon">Windows</h3>
+
+                        <p><strong>Step 1: Download & Extract FFmpeg</strong></p>
+                        <div class="download-buttons">
+                            <a href="ffmpeg-windows.7z" class="download-btn" download>
+                                <img src="windows.png" alt="" class="button-icon"> Download FFmpeg for Windows
+                            </a>
+                        </div>
+                        <ol>
+                            <li>Extract the downloaded file (e.g., using 7-Zip) to a permanent location, like <code>C:\ffmpeg</code>.</li>
+                            <li>Find the <code>bin</code> folder inside (e.g., <code>C:\ffmpeg\bin</code>).</li>
+                            <li><strong>Add FFmpeg to your system's PATH:</strong>
+                                <ul>
+                                    <li>Search "Environment Variables" » "Edit the system environment variables".</li>
+                                    <li>Click "Environment Variables...".</li>
+                                    <li>Under "System variables", select "Path" » "Edit...".</li>
+                                    <li>Click "New" » Paste path to <code>bin</code> folder (e.g., <code>C:\ffmpeg\bin</code>).</li>
+                                    <li>Click OK on all windows.</li>
+                                </ul>
+                            </li>
+                        </ol>
+                        <div class="verification-step">
+                            <strong>Verify:</strong> Open a <strong>new</strong> CMD/PowerShell and run:<br><code>ffmpeg -version</code>
+                        </div>
+                    </div>
+                </div><!-- End Windows Card -->
+
+                <!-- macOS Card -->
+                <div class="col-lg-4">
+                    <div class="os-guide-card">
+                        <h3><img src="mac-os.png" alt="macOS Logo" class="os-icon">macOS</h3>
+
+                        <p><strong>Option 1: Homebrew (Recommended)</strong></p>
+                        <ol>
+                            <li>Install Homebrew (if needed):<br><code>/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</code></li>
+                            <li>Install FFmpeg:<br><code>brew install ffmpeg</code></li>
+                        </ol>
+
+                        <hr class="method-separator"> <!-- Separator -->
+
+                        <p><strong>Option 2: Manual Download</strong></p>
+                        <div class="download-buttons">
+                            <a href="ffmpeg-mac-os.zip" class="download-btn" download>
+                            <img src="mac-os.png" alt="" class="button-icon"> Download FFmpeg for macOS
+                        </a>
+                        </div>
+                        <ol>
+                            <li>Extract the download to a location (e.g., <code>~/ffmpeg</code>).</li>
+                            <li>Add to PATH (zsh example):<br><code>echo 'export PATH="$HOME/ffmpeg/bin:$PATH"' >> ~/.zshrc && source ~/.zshrc</code></li>
+                        </ol>
+
+                        <div class="verification-step">
+                            <strong>Verify:</strong> Open a <strong>new</strong> Terminal and run:<br><code>ffmpeg -version</code>
+                        </div>
+                    </div>
+                </div><!-- End macOS Card -->
+
+                <!-- Linux Card -->
+                <div class="col-lg-4">
+                    <div class="os-guide-card">
+                        <h3><img src="linux.png" alt="Linux Logo" class="os-icon">Linux</h3>
+
+                        <p><strong>Option 1: Package Manager (Recommended)</strong></p>
                         <ul>
-                            <li>Search for "Environment Variables" in the Start menu and open "Edit the system environment variables".</li>
-                            <li>Click "Environment Variables...".</li>
-                            <li>Under "System variables", select "Path" and click "Edit...".</li>
-                            <li>Click "New" and paste the full path to the <code>bin</code> folder (e.g., <code>C:\ffmpeg\bin</code>).</li>
-                            <li>Click OK on all windows to save.</li>
+                            <li><strong>Ubuntu/Debian:</strong><br><code>sudo apt update && sudo apt install ffmpeg</code></li>
+                            <li><strong>Fedora:</strong><br><code>sudo dnf install ffmpeg</code></li>
+                            <li><strong>Arch Linux:</strong><br><code>sudo pacman -S ffmpeg</code></li>
                         </ul>
-                    </li>
-                    <li><strong>Verify Installation:</strong> Open a <strong>new</strong> Command Prompt or PowerShell window and type <code>ffmpeg -version</code>. You should see FFmpeg details.</li>
-                </ol>
-            </div>
 
-            <!-- macOS Installation -->
-            <div class="os-installation">
-                <h3><img src="mac-os.png" alt="" class="button-icon me-2">For macOS</h3>
-                 <p><strong>Option 1: Using Homebrew (Recommended)</strong></p>
-                 <ol>
-                     <li>Install Homebrew if you don't have it. Open Terminal and run: <br><code>/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</code></li>
-                     <li>Install FFmpeg: <code>brew install ffmpeg</code></li>
-                 </ol>
-                 <p><strong>Option 2: Manual Download</strong></p>
-                 <div class="download-buttons">
-                     <a href="ffmpeg-mac-os.zip" class="download-btn" download>
-                        <img src="mac-os.png" alt="" class="button-icon"> Download FFmpeg for macOS
-                    </a>
-                 </div>
-                 <ol>
-                     <li>Extract the downloaded file to a location like <code>~/ffmpeg</code>.</li>
-                     <li>Add to PATH (adjust based on your shell, usually zsh):<br><code>echo 'export PATH="$HOME/ffmpeg/bin:$PATH"' >> ~/.zshrc && source ~/.zshrc</code></li>
-                 </ol>
-                 <p><strong>Verify Installation:</strong> Open a <strong>new</strong> Terminal window and type <code>ffmpeg -version</code>.</p>
-            </div>
+                        <hr class="method-separator"> <!-- Separator -->
 
-            <!-- Linux Installation -->
-            <div class="os-installation">
-                <h3><img src="linux.png" alt="" class="button-icon me-2">For Linux</h3>
-                <p><strong>Option 1: Using Package Manager (Recommended)</strong></p>
-                <ol>
-                    <li><strong>Ubuntu/Debian:</strong> <code>sudo apt update && sudo apt install ffmpeg</code></li>
-                    <li><strong>Fedora:</strong> <code>sudo dnf install ffmpeg</code></li>
-                    <li><strong>Arch Linux:</strong> <code>sudo pacman -S ffmpeg</code></li>
-                </ol>
-                 <p><strong>Option 2: Manual Download (Link coming soon)</strong></p>
-                 <div class="download-buttons">
-                    <button class="download-btn" disabled> <!-- Use disabled button -->
-                        <img src="linux.png" alt="" class="button-icon"> Linux Download Coming Soon!
-                    </button>
-                 </div>
-                 <ol>
-                     <li>Extract FFmpeg to a location like <code>~/ffmpeg</code>.</li>
-                     <li>Add to PATH (adjust based on your shell, usually bash):<br><code>echo 'export PATH="$HOME/ffmpeg/bin:$PATH"' >> ~/.bashrc && source ~/.bashrc</code></li>
-                 </ol>
-                <p><strong>Verify Installation:</strong> Open a <strong>new</strong> terminal window and type <code>ffmpeg -version</code>.</p>
-            </div>
+                        <p><strong>Option 2: Manual Download</strong></p>
+                        <div class="download-buttons">
+                            <button class="download-btn" disabled>
+                                <img src="linux.png" alt="" class="button-icon"> Linux Download Coming Soon!
+                            </button>
+                        </div>
+                        <ol>
+                            <li>Extract FFmpeg (e.g., to <code>~/ffmpeg</code>).</li>
+                            <li>Add to PATH (bash example):<br><code>echo 'export PATH="$HOME/ffmpeg/bin:$PATH"' >> ~/.bashrc && source ~/.bashrc</code></li>
+                        </ol>
 
-            <p class="text-center mt-4">Need more help? <a href="https://youtu.be/vdOUTpoeAPc?si=ytZGyJkcNPTdKiMm" target="_blank" rel="noopener noreferrer" class="youtube-link">Watch our video tutorial on YouTube</a>.</p>
+                        <div class="verification-step">
+                            <strong>Verify:</strong> Open a <strong>new</strong> Terminal and run:<br><code>ffmpeg -version</code>
+                        </div>
+                    </div>
+                </div><!-- End Linux Card -->
+
+            </div> <!-- End Row -->
+
+            <p class="text-center mt-5">Need more help? <a href="https://youtu.be/vdOUTpoeAPc?si=ytZGyJkcNPTdKiMm" target="_blank" rel="noopener noreferrer" class="youtube-help-link">Watch our video tutorial on YouTube</a>.</p>
         </div>
     </section>
+
 
     <!-- Footer -->
     <footer class="mt-5">
