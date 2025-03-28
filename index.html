@@ -14,6 +14,9 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 
+    <!-- Lightbox2 CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet" />
+
     <!-- Favicon -->
     <link rel="icon" href="favicon.png" type="image/x-icon">
 
@@ -233,36 +236,63 @@
             margin-bottom: 0.3rem;
         }
 
-        /* Screenshots Section */
+        /* --- Screenshots Section Styles --- */
         .screenshots {
-            background-color: var(--background-medium); /* Add subtle background */
+            background-color: var(--background-medium);
             padding-top: 3rem;
             padding-bottom: 3rem;
         }
         .screenshots h2 {
-            margin-bottom: 2.5rem;
+            margin-bottom: 2.5rem; /* Keep existing margin */
+            font-weight: 700;
         }
-        .screenshots .screenshot-item a {
-            display: block; /* Make the whole link area clickable */
+        .screenshot-item {
+            position: relative; /* For potential future overlays or icons */
+            overflow: hidden; /* Ensure hover effect doesn't break layout */
+            border-radius: 8px; /* Slightly rounded corners for the item */
+            box-shadow: 0 5px 15px var(--shadow-color); /* Enhance shadow */
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover */
+        }
+        .screenshot-item:hover {
+             transform: translateY(-5px); /* Lift effect on hover */
+             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Deeper shadow on hover */
+        }
+
+        /* Styles for the link wrapping the image - make it the clickable area */
+        .screenshot-item a {
+            display: block;
             text-decoration: none;
             color: var(--text-primary);
-            transition: transform 0.2s ease-in-out;
+            background-color: #3a3f4c; /* Match card background or similar */
+            border-radius: 8px; /* Match parent border-radius */
+            cursor: zoom-in; /* Indicate zoom capability */
         }
-         .screenshots .screenshot-item a:hover {
-             transform: scale(1.05); /* Zoom effect on hover */
-             text-decoration: none;
+         .screenshot-item a:hover img {
+            opacity: 0.9; /* Slightly fade image on hover for visual feedback */
+         }
+         /* Remove underline on hover for lightbox links */
+         .screenshot-item a:hover {
+            text-decoration: none;
+            color: var(--text-primary); /* Keep text color consistent */
          }
 
-        .screenshots .screenshot-item img {
-            border-radius: 5px;
-            box-shadow: 0 4px 8px var(--shadow-color);
-            margin-bottom: 1rem; /* Space below image */
+
+        .screenshot-item img {
+             border-top-left-radius: 8px; /* Round top corners */
+             border-top-right-radius: 8px;
+             border-bottom: 1px solid var(--border-color); /* Separator line */
+             transition: opacity 0.3s ease; /* Transition for hover effect */
+             margin-bottom: 0; /* Remove default margin */
         }
 
-        .screenshots .screenshot-desc {
+        .screenshot-desc {
             font-size: 0.9rem;
-            padding: 0 0.5rem; /* Add slight horizontal padding */
+            padding: 0.75rem 1rem; /* Add padding */
+            min-height: 60px; /* Give description area some minimum height */
+            text-align: left; /* Align text left for readability */
         }
+        /* --- End Screenshots Section Styles --- */
+
 
         /* --- Installation Guide Section Styles --- */
         .installation-guide-container {
@@ -388,7 +418,6 @@
         .youtube-help-link:hover {
             color: darken(var(--link-color), 10%) !important;
         }
-
         /* --- End Installation Guide Section Styles --- */
 
 
@@ -426,6 +455,61 @@
         }
         footer p:last-child {
              margin-bottom: 0;
+        }
+
+
+        /* Style for the "LATEST" tag in the table */
+        .latest-tag {
+            font-weight: 700; /* Bold */
+            color: var(--link-color); /* Use the gold color for the text itself */
+            text-transform: uppercase; /* Ensure it's uppercase */
+            display: inline-block; /* Needed for potential transform/animation */
+            /* Initial text shadow for the glow */
+            text-shadow: 0 0 4px rgba(255, 255, 255, 0.6), /* Inner white highlight */
+                        0 0 8px var(--link-color),     /* Main gold glow */
+                        0 0 12px var(--link-color);    /* Softer outer gold glow */
+            /* Apply the animation */
+            animation: pulse-glow 2s infinite ease-in-out;
+        }
+
+        /* Keyframes for the pulsing glow animation */
+        @keyframes pulse-glow {
+        0%, 100% {
+            text-shadow: 0 0 4px rgba(255, 255, 255, 0.6),
+                        0 0 8px var(--link-color),
+                        0 0 12px var(--link-color);
+            opacity: 0.85; /* Slightly dimmer at start/end */
+        }
+        50% {
+            text-shadow: 0 0 6px rgba(255, 255, 255, 0.9), /* Brighter inner highlight */
+                        0 0 14px var(--link-color),    /* Wider main glow */
+                        0 0 20px var(--link-color);    /* Wider outer glow */
+            opacity: 1; /* Full brightness at peak */
+        }
+        }
+
+        /* Lightbox Customization (Dark Theme) */
+        .lb-data .lb-caption {
+            color: var(--text-primary);
+        }
+        .lb-data .lb-number {
+            color: var(--text-primary);
+            opacity: 0.7;
+        }
+        .lb-nav a.lb-prev, .lb-nav a.lb-next {
+             opacity: 0.6;
+             transition: opacity 0.2s ease;
+        }
+        .lb-nav a.lb-prev:hover, .lb-nav a.lb-next:hover {
+             opacity: 1;
+        }
+        .lb-data .lb-close {
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        .lb-data .lb-close:hover {
+            opacity: 1;
+            /* background-color: transparent; Optional: remove default hover background */
         }
 
     </style>
@@ -475,7 +559,7 @@
 
     <!-- Software Info Table Section -->
     <section class="software-info container py-5">
-        <h2 class="text-center mb-4">Free Version Download</h2>
+        <h2 class="text-center mb-4">Free Download</h2>
         <div class="table-responsive">
             <table class="table table-dark table-bordered text-center align-middle">
                 <thead>
@@ -490,7 +574,7 @@
                 </thead>
                 <tbody>
                      <tr>
-                        <td>Inviloader v7.5 (x64)<br><strong>Windows Only</strong></td>
+                        <td>Inviloader v7.5 (x64)<br><strong>Windows Only</strong><br><span class="latest-tag">LATEST</span></td>
                         <td>20.4MB</td>
                         <td>28 March 2025</td> <!-- Note: Future Date? -->
                         <td>7.5</td>
@@ -543,29 +627,49 @@
              <h2 class="mb-5">How It Works!</h2>
              <!-- Adjust columns for different screen sizes: 1 on xs, 2 on sm, 4 on lg -->
             <div class="row gy-4 gx-lg-4 justify-content-center">
-                <div class="col-10 col-sm-6 col-lg-3 screenshot-item">
-                    <a href="pic1.jpg" target="_blank" title="View Screenshot 1 Larger">
-                        <img src="pic1.jpg" alt="Inviloader main menu: Choose Video or Audio" loading="lazy">
-                        <p class="screenshot-desc">User-friendly menu: Choose '1' for Video or '2' for Audio.</p>
-                    </a>
+                <!-- Screenshot 1 -->
+                <div class="col-10 col-sm-6 col-lg-3">
+                     <div class="screenshot-item">
+                        <a href="pic1.jpg"
+                           data-lightbox="screenshot-gallery"
+                           data-title="User-friendly menu: Choose '1' for Video or '2' for Audio.">
+                            <img src="pic1.jpg" alt="Inviloader main menu: Choose Video or Audio" loading="lazy">
+                            <p class="screenshot-desc">User-friendly menu: Choose '1' for Video or '2' for Audio.</p>
+                        </a>
+                    </div>
                 </div>
-                <div class="col-10 col-sm-6 col-lg-3 screenshot-item">
-                    <a href="pic2.jpg" target="_blank" title="View Screenshot 2 Larger">
-                        <img src="pic2.jpg" alt="Inviloader video download quality selection" loading="lazy">
-                        <p class="screenshot-desc">Select video quality up to 4K. Inviloader handles the download automatically.</p> <!-- Updated description for 4k -->
-                    </a>
+                <!-- Screenshot 2 -->
+                 <div class="col-10 col-sm-6 col-lg-3">
+                    <div class="screenshot-item">
+                        <a href="pic2.jpg"
+                           data-lightbox="screenshot-gallery"
+                           data-title="Select video quality up to 4K. Inviloader handles the download automatically.">
+                            <img src="pic2.jpg" alt="Inviloader video download quality selection" loading="lazy">
+                            <p class="screenshot-desc">Select video quality up to 4K. Inviloader handles the download automatically.</p>
+                        </a>
+                    </div>
                 </div>
-                <div class="col-10 col-sm-6 col-lg-3 screenshot-item">
-                    <a href="pic3.jpg" target="_blank" title="View Screenshot 3 Larger">
-                        <img src="pic3.jpg" alt="Inviloader output folder in Downloads directory" loading="lazy">
-                        <p class="screenshot-desc">Files are saved automatically in your 'Downloads/Inviloader output' folder.</p>
-                    </a>
+                <!-- Screenshot 3 -->
+                 <div class="col-10 col-sm-6 col-lg-3">
+                    <div class="screenshot-item">
+                        <a href="pic3.jpg"
+                           data-lightbox="screenshot-gallery"
+                           data-title="Files are saved automatically in your 'Downloads/Inviloader output' folder.">
+                            <img src="pic3.jpg" alt="Inviloader output folder in Downloads directory" loading="lazy">
+                            <p class="screenshot-desc">Files are saved automatically in your 'Downloads/Inviloader output' folder.</p>
+                        </a>
+                    </div>
                 </div>
-                <div class="col-10 col-sm-6 col-lg-3 screenshot-item">
-                    <a href="pic4.jpg" target="_blank" title="View Screenshot 4 Larger">
-                        <img src="pic4.jpg" alt="Inviloader audio download process" loading="lazy">
-                        <p class="screenshot-desc">Downloading audio is simple: Choose the audio option and paste the YouTube link.</p>
-                    </a>
+                <!-- Screenshot 4 -->
+                 <div class="col-10 col-sm-6 col-lg-3">
+                    <div class="screenshot-item">
+                        <a href="pic4.jpg"
+                           data-lightbox="screenshot-gallery"
+                           data-title="Downloading audio is simple: Choose the audio option and paste the YouTube link.">
+                            <img src="pic4.jpg" alt="Inviloader audio download process" loading="lazy">
+                            <p class="screenshot-desc">Downloading audio is simple: Choose the audio option and paste the YouTube link.</p>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -697,5 +801,18 @@
 
     <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <!-- Lightbox2 JS (Requires jQuery, which Bootstrap 5 no longer includes by default - Adding jQuery here) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js" integrity="sha512-Ixzuzfxv1EqafeQlTCufWfaC6ful6WFqIz4G+dWvK0beHw0NVJrfDdDd+DdnCcHf/AcugSqAUSVMAnS+OhwGvA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+        // Optional: Configure Lightbox options if needed
+        lightbox.option({
+          'resizeDuration': 200, // Speed of resizing animation
+          'wrapAround': true, // Allows navigating from last image back to first
+          'disableScrolling': true // Prevent background scrolling when lightbox is open
+        })
+    </script>
+
 </body>
 </html>
