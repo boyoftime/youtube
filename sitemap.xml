@@ -1,68 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-    <!-- Home Page -->
+    <!-- 
+    Sitemap for Inviloader - Updated for the single-page design.
+    This structure tells search engines about the main page and its most important sections.
+    -->
+
+    <!-- Home Page (Highest Priority) -->
     <url>
         <loc>https://inviloader.pro/</loc>
-        <lastmod>2025-01-29</lastmod>
-        <changefreq>daily</changefreq>
+        <lastmod>2024-06-18</lastmod> <!-- Change this to the date you upload the new site -->
+        <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
 
-    <!-- Download Page -->
+    <!-- About Section -->
     <url>
-        <loc>https://inviloader.pro/download</loc>
-        <lastmod>2025-01-29</lastmod>
+        <loc>https://inviloader.pro/#about</loc>
+        <lastmod>2024-06-18</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Releases / Download Section (High Priority) -->
+    <url>
+        <loc>https://inviloader.pro/#releases</loc>
+        <lastmod>2024-06-18</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
 
-    <!-- Installation Guide -->
+    <!-- FFmpeg Installation Guide Section -->
     <url>
-        <loc>https://inviloader.pro/installation-guide</loc>
-        <lastmod>2025-01-29</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-
-    <!-- Screenshots Page -->
-    <url>
-        <loc>https://inviloader.pro/screenshots</loc>
-        <lastmod>2025-01-29</lastmod>
+        <loc>https://inviloader.pro/#ffmpeg-guide</loc>
+        <lastmod>2024-06-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
 
-    <!-- Free Version Details -->
-    <url>
-        <loc>https://inviloader.pro/free-version</loc>
-        <lastmod>2025-01-29</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
 
-    <!-- Pro Version Details -->
-    <url>
-        <loc>https://inviloader.pro/pro-version</loc>
-        <lastmod>2025-01-29</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-
-    <!-- Contact Page -->
-    <url>
-        <loc>https://inviloader.pro/contact</loc>
-        <lastmod>2025-01-29</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
-    </url>
-
-    <!-- Terms & Privacy Policy (If Exists) -->
-    <url>
-        <loc>https://inviloader.pro/privacy-policy</loc>
-        <lastmod>2025-01-29</lastmod>
-        <changefreq>yearly</changefreq>
-        <priority>0.5</priority>
-    </url>
 
 </urlset>
