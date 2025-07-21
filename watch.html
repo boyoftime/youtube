@@ -22,12 +22,10 @@
             --background-medium: #1b1b1b;
             --text-primary: #e0e0e0;
             --text-accent: #ffffff;
-            --accent-color: #6a0dad; /* This remains your site's accent */
+            --accent-color: #6a0dad;
             --accent-hover: #7323d0;
             --border-color: #333;
             --font-family-base: 'Quicksand', sans-serif;
-            
-            /* --- NEW: YouTube-like Player Theme Variables --- */
             --youtube-red: #FF0000;
         }
 
@@ -89,9 +87,11 @@
         .download-btn .button-icon { width: 20px; height: 20px; }
         .github-btn { background-color: #333; }
         .github-btn:hover { background-color: #444; }
+        
+        #player-container {
+            position: relative; 
+        }
 
-
-        /* --- NEW: STYLING THE PLAYER TO LOOK LIKE YOUTUBE --- */
         .plyr--video {
             border-radius: 12px; overflow: hidden;
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
@@ -101,54 +101,34 @@
             --plyr-font-family: var(--font-family-base);
             --plyr-control-radius: 3px;
         }
-        /* Make progress bar thinner */
+        
         .plyr--video .plyr__progress input[type=range] { height: 5px; }
         .plyr--video .plyr__progress input[type=range]::-webkit-slider-thumb { height: 13px; width: 13px; }
         .plyr--video .plyr__progress input[type=range]::-moz-range-thumb { height: 13px; width: 13px; }
         .plyr--video .plyr__progress input[type=range]::-ms-thumb { height: 13px; width: 13px; }
 
-        /* Remove background from control buttons for a cleaner look */
         .plyr__controls .plyr__controls__item.plyr__control {
             background: transparent;
             box-shadow: none;
         }
 
-        /* --- NEW: Styles for the Double-Tap Seek Animation --- */
         .seek-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 50%; /* Each overlay takes up half the screen */
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            pointer-events: none; /* Allows clicks to pass through */
-            opacity: 0;
-            transition: opacity 0.2s ease-out;
+            position: absolute; top: 0; left: 0; width: 50%; height: 100%;
+            display: flex; align-items: center; justify-content: center;
+            pointer-events: none; opacity: 0; transition: opacity 0.2s ease-out;
         }
         .seek-overlay.right { left: 50%; }
         
         .seek-overlay-icon {
-            color: white;
-            font-size: 2rem;
-            font-weight: bold;
+            color: white; font-size: 2rem; font-weight: bold;
             text-shadow: 0 0 10px rgba(0,0,0,0.5);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            transform: scale(0.8);
-            transition: transform 0.2s ease-out;
+            display: flex; flex-direction: column; align-items: center;
+            transform: scale(0.8); transition: transform 0.2s ease-out;
         }
         .seek-overlay-icon span { font-size: 1rem; margin-top: 0.5rem; }
 
-        /* Animation class to trigger the effect */
-        .seek-overlay.is-active {
-            opacity: 1;
-        }
-        .seek-overlay.is-active .seek-overlay-icon {
-            transform: scale(1);
-        }
+        .seek-overlay.is-active { opacity: 1; }
+        .seek-overlay.is-active .seek-overlay-icon { transform: scale(1); }
         
         .back-button {
             display: inline-flex; align-items: center; gap: 0.75rem;
@@ -166,12 +146,10 @@
 <body>
 
     <main class="watch-container">
-        
         <div class="video-header">
             <h1>Inviloader & FFmpeg Installation Guide</h1>
             <p>Welcome! Download the required files below, then watch the video to see the complete setup process for both Inviloader and its FFmpeg dependency.</p>
         </div>
-
         <section class="download-links-section">
             <h3>Step 1: Download Required Files</h3>
             <div class="buttons-wrapper">
@@ -185,19 +163,11 @@
                 </a>
             </div>
         </section>
-
-        <!-- The video player structure now includes overlays for seek feedback -->
         <div class="plyr__video-embed" id="player-container">
-            <video 
-                id="player"
-                playsinline
-                controls
-                preload="auto"
-                poster="video-poster.png">
+            <video id="player" playsinline controls preload="auto" poster="video-poster.png">
                 <source src="inviloader.mp4" type="video/mp4">
                 Your browser does not support the video tag. Please update it to watch this tutorial.
             </video>
-            <!-- NEW: Overlays for seek feedback -->
             <div class="seek-overlay left">
                 <div class="seek-overlay-icon">«<span>10s</span></div>
             </div>
@@ -205,27 +175,22 @@
                 <div class="seek-overlay-icon">»<span>10s</span></div>
             </div>
         </div>
-        
         <a href="index.html" class="back-button">
             <span class="arrow">←</span> Back to Main Page
         </a>
-
     </main>
 
-    <!-- Plyr Player JavaScript -->
     <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
 
-    <!-- Initialize Plyr with Custom Options and Animation Logic -->
+    <!-- ======== ADVANCED SCRIPT WITH SEEK ACCUMULATION ======== -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             // --- 1. SETUP PLAYER AND ELEMENTS ---
-            const seekTime = 10;
             const player = new Plyr('#player', {
-                // Enable YouTube-like features
-                dblclickFullscreen: false, // Required for double-tap seek
+                dblclickFullscreen: false,
+                clickToPlay: true,
                 keyboard: { focused: true, global: true },
                 tooltips: { controls: true, seek: true },
-                // Define the controls to look like YouTube's
                 controls: [
                     'play-large', 'play', 'progress', 'current-time', 'mute', 
                     'volume', 'captions', 'settings', 'pip', 'airplay', 'fullscreen'
@@ -236,61 +201,93 @@
             const container = document.getElementById('player-container');
             const rewindOverlay = container.querySelector('.seek-overlay.left');
             const forwardOverlay = container.querySelector('.seek-overlay.right');
+            const rewindTimeEl = rewindOverlay.querySelector('span');
+            const forwardTimeEl = forwardOverlay.querySelector('span');
 
-            // --- 2. FUNCTION TO SHOW ANIMATED FEEDBACK ---
+            // --- 2. STATE VARIABLES FOR ACCUMULATED SEEK ---
+            const baseSeekTime = 10;
+            let seekAccumulator = 0;
+            let seekTimeout;
+            let lastSeekDirection = null;
+
+            // --- 3. FUNCTION TO SHOW ANIMATED FEEDBACK ---
             let feedbackTimeout;
             function showSeekFeedback(element) {
-                // Show the overlay
                 element.classList.add('is-active');
-                
-                // Clear any existing timeout to reset the animation hide timer
                 clearTimeout(feedbackTimeout);
-
-                // Hide the overlay after a short duration
                 feedbackTimeout = setTimeout(() => {
                     element.classList.remove('is-active');
-                }, 500); // Animation will last 500ms
+                }, 800); // Keep it visible a bit longer
             }
 
-            // --- 3. CUSTOM DOUBLE-TAP LOGIC TO TRIGGER ANIMATION ---
-            let lastTap = 0;
-            let tapTimeout;
+            // --- 4. FIX #1: PREVENT DESKTOP DOUBLE-CLICK FULLSCREEN ---
+            player.elements.container.addEventListener('dblclick', (event) => {
+                // This stops the browser's native fullscreen behavior on desktop
+                event.preventDefault();
+            });
 
-            // We listen on the main Plyr container to capture all clicks
+            // --- 5. FIX #2: ADVANCED CLICK LOGIC WITH ACCUMULATION ---
+            let lastTapTime = 0;
+            const doubleTapDelay = 300;
+
             player.elements.container.addEventListener('click', (event) => {
-                // Ignore clicks on the actual controls bar
-                if (event.target.closest('.plyr__controls')) {
-                    return;
-                }
+                if (event.target.closest('.plyr__controls')) return;
                 
                 const currentTime = new Date().getTime();
-                const tapLength = currentTime - lastTap;
-                clearTimeout(tapTimeout);
+                const timeSinceLastTap = currentTime - lastTapTime;
 
-                if (tapLength < 300 && tapLength > 0) {
-                    // It's a double tap
-                    event.preventDefault(); // Prevent single tap action
+                if (timeSinceLastTap < doubleTapDelay && timeSinceLastTap > 0) {
+                    event.preventDefault(); // Prevent single-click play/pause
 
                     const rect = player.elements.container.getBoundingClientRect();
-                    const tapPosition = event.clientX - rect.left;
+                    const tapXPosition = event.clientX - rect.left;
+                    let currentDirection = null;
 
-                    // Plyr handles the seeking, we just show the animation
-                    if (tapPosition < rect.width * 0.4) { // Tapping on the left 40%
-                        showSeekFeedback(rewindOverlay);
-                        // We don't need to call player.rewind() because Plyr does it automatically
-                    } else if (tapPosition > rect.width * 0.6) { // Tapping on the right 40%
-                        showSeekFeedback(forwardOverlay);
-                        // We don't need to call player.forward() either
+                    if (tapXPosition < rect.width * 0.45) {
+                        currentDirection = 'rewind';
+                    } else if (tapXPosition > rect.width * 0.55) {
+                        currentDirection = 'forward';
                     } else {
-                        // Tapped in the middle, toggle fullscreen
-                        player.fullscreen.toggle();
+                        // Double tap in the middle does nothing now
+                        lastTapTime = 0; // Reset to avoid issues
+                        return;
                     }
+
+                    // If direction changed, perform the last seek immediately and reset
+                    if (lastSeekDirection && lastSeekDirection !== currentDirection) {
+                        clearTimeout(seekTimeout);
+                        if (lastSeekDirection === 'rewind') player.rewind(seekAccumulator);
+                        else player.forward(seekAccumulator);
+                        seekAccumulator = 0;
+                    }
+
+                    // Accumulate time and update UI
+                    lastSeekDirection = currentDirection;
+                    seekAccumulator += baseSeekTime;
                     
-                    lastTap = 0; // Reset for next tap
-                } else {
-                    // This is a single tap. Let Plyr handle the play/pause.
-                    lastTap = currentTime;
+                    const overlay = currentDirection === 'rewind' ? rewindOverlay : forwardOverlay;
+                    const timeEl = currentDirection === 'rewind' ? rewindTimeEl : forwardTimeEl;
+                    
+                    timeEl.textContent = `${seekAccumulator}s`;
+                    showSeekFeedback(overlay);
+
+                    // Set/reset a timeout to perform the action after user stops tapping
+                    clearTimeout(seekTimeout);
+                    seekTimeout = setTimeout(() => {
+                        if (lastSeekDirection === 'rewind') {
+                            player.rewind(seekAccumulator);
+                        } else if (lastSeekDirection === 'forward') {
+                            player.forward(seekAccumulator);
+                        }
+                        // Reset state after action
+                        seekAccumulator = 0;
+                        lastSeekDirection = null;
+                    }, 400); // Wait 400ms after the last tap
+
+                    lastTapTime = 0; // Reset tap time to require two new clicks
                 }
+                
+                lastTapTime = currentTime;
             });
         });
     </script>
