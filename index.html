@@ -181,45 +181,8 @@
         .github-btn { background-color: #333; }
         .github-btn:hover { background-color: #444; }
 
-        /* Releases Section (Accordion) Styles */
+        /* Releases Section */
         .releases-section { padding: 3rem 0; }
-        .accordion-button {
-            background-color: #3a3f4c;
-            color: var(--text-light);
-            font-weight: 700;
-            font-size: 1.2rem;
-        }
-        .accordion-button:not(.collapsed) {
-            background-color: var(--accent-color);
-            color: var(--text-accent);
-            box-shadow: inset 0 -1px 0 var(--border-color);
-        }
-        .accordion-button:focus {
-            box-shadow: 0 0 0 0.25rem rgba(106, 13, 173, 0.5);
-        }
-        .accordion-button::after {
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23e0e0e0'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
-        }
-        .accordion-button:not(.collapsed)::after {
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
-        }
-        .accordion-body { background-color: #222; color: var(--text-primary); }
-        .accordion-item { border-color: var(--border-color); }
-        .release-details ul { padding-left: 1.2rem; }
-        .release-details li { margin-bottom: 0.4rem; }
-        .latest-tag {
-            font-weight: 700;
-            color: var(--link-color);
-            text-transform: uppercase;
-            text-shadow: 0 0 8px var(--link-color);
-            animation: pulse-glow 2s infinite ease-in-out;
-            margin-left: 1rem;
-            font-size: 0.9rem;
-        }
-        @keyframes pulse-glow {
-            0%, 100% { text-shadow: 0 0 8px var(--link-color); opacity: 0.85; }
-            50% { text-shadow: 0 0 16px var(--link-color); opacity: 1; }
-        }
         
         /* --- Installation Guide Section Styles --- */
         .installation-guide-section {
@@ -367,106 +330,14 @@
     <!-- Releases Section -->
     <section id="releases" class="releases-section">
         <div class="container">
-            <h2 class="text-center mb-4">Releases</h2>
-            <p class="text-center text-secondary mb-5">Download the latest version or browse previous releases. All downloads are for Windows (x64).</p>
+            <h2 class="text-center mb-4">Download Inviloader</h2>
+            <p class="text-center text-secondary mb-5">Click the button below to go to our official GitHub page where you can find the latest version and all previous releases for Windows (x64).</p>
             
-            <div class="accordion" id="releasesAccordion">
-
-                <!-- NEW Release Item: v11.0.0 (Latest) -->
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="heading_v11">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_v11" aria-expanded="true" aria-controls="collapse_v11">
-                            Inviloader v11.0.0 - The Chimera Release <span class="latest-tag">Latest</span>
-                        </button>
-                    </h2>
-                    <div id="collapse_v11" class="accordion-collapse collapse show" aria-labelledby="heading_v11" data-bs-parent="#releasesAccordion">
-                        <div class="accordion-body">
-                            <div class="row align-items-center">
-                                <div class="col-md-8 release-details">
-                                    <p><strong>Release Date:</strong> July 06, 2025</p>
-                                    <p>This is a massive leap forward, focusing on powerful new features, enhanced stability, and a much smarter user experience.</p>
-                                    <ul>
-                                        <li><strong>Bypass Restrictions:</strong> Harness the power of cookies to download age-restricted, members-only, and private videos.</li>
-                                        <li><strong>Full Playlist Support:</strong> Download entire YouTube playlists in both video and audio formats.</li>
-                                        <li><strong>Auto-Fetch on Paste:</strong> The workflow is now faster than ever. Just paste a URL to begin.</li>
-                                        <li><strong>Highlight on Open:</strong> Easily find your completed downloads as the app now highlights the file in the folder.</li>
-                                        <li><strong>Smarter & More Stable:</strong> Fixed fetch interference between tabs and improved error handling.</li>
-                                    </ul>
-                                </div>
-                                <div class="col-md-4 text-center text-md-end mt-3 mt-md-0">
-                                    <a href="https://github.com/boyoftime/youtube/releases/tag/v11.0.0" class="download-btn github-btn" target="_blank" rel="noopener noreferrer">
-                                        <img src="github.png" alt="" class="button-icon">
-                                        Download on GitHub
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- OLD Release Item: v10.0.5 -->
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingTen">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
-                            Inviloader v10.0.5
-                        </button>
-                    </h2>
-                    <div id="collapseTen" class="accordion-collapse collapse" aria-labelledby="headingTen" data-bs-parent="#releasesAccordion">
-                        <div class="accordion-body">
-                            <div class="row align-items-center">
-                                <div class="col-md-8 release-details">
-                                    <p><strong>Release Date:</strong> June 26, 2025</p>
-                                    <p>This was a landmark release focusing on a complete overhaul of the user experience, application stability, and professional deployment.</p>
-                                    <ul>
-                                        <li>Professional Installer with intelligent version handling.</li>
-                                        <li>Dynamic Download Queue with live progress, speed, and ETA.</li>
-                                        <li>Enhanced UI/UX with smart buttons and no startup flash.</li>
-                                        <li>Robust URL handling and improved error messages.</li>
-                                        <li>Shorts video now supported.</li>
-                                    </ul>
-                                </div>
-                                <div class="col-md-4 text-center text-md-end mt-3 mt-md-0">
-                                    <a href="https://github.com/boyoftime/youtube/releases/tag/v10.0.5" class="download-btn github-btn" target="_blank" rel="noopener noreferrer">
-                                        <img src="github.png" alt="" class="button-icon">
-                                        Download on GitHub
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- OLD Release Item: v10.0.0 -->
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="heading_v10.0.0">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_v10.0.0" aria-expanded="false" aria-controls="collapse_v10.0.0">
-                            Inviloader v10.0.0
-                        </button>
-                    </h2>
-                    <div id="collapse_v10.0.0" class="accordion-collapse collapse" aria-labelledby="heading_v10.0.0" data-bs-parent="#releasesAccordion">
-                        <div class="accordion-body">
-                            <div class="row align-items-center">
-                                <div class="col-md-8 release-details">
-                                    <p><strong>Release Date:</strong> June 18, 2025</p>
-                                    <p>This release focused on a complete overhaul of the user experience, application stability, and professional deployment.</p>
-                                    <ul>
-                                        <li>Professional Installer with intelligent version handling.</li>
-                                        <li>Dynamic Download Queue with live progress, speed, and ETA.</li>
-                                        <li>Enhanced UI/UX with smart buttons and no startup flash.</li>
-                                        <li>Robust URL handling and improved error messages.</li>
-                                    </ul>
-                                </div>
-                                <div class="col-md-4 text-center text-md-end mt-3 mt-md-0">
-                                    <a href="https://github.com/boyoftime/youtube/releases/tag/v10.0.0" class="download-btn github-btn" target="_blank" rel="noopener noreferrer">
-                                        <img src="github.png" alt="" class="button-icon">
-                                        Download on GitHub
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Add new version from here -->
+            <div class="text-center">
+                <a href="https://github.com/boyoftime/youtube/releases" class="download-btn github-btn" target="_blank" rel="noopener noreferrer" style="padding: 1rem 2rem; font-size: 1.2rem;">
+                    <img src="github.png" alt="" class="button-icon" style="width: 24px; height: 24px;">
+                    View Releases on GitHub
+                </a>
             </div>
         </div>
     </section>
@@ -479,18 +350,18 @@
 
             <div class="guide-step">
                 <h3><span class="step-number">1</span>Download FFmpeg</h3>
-                <p>First, you need to download the latest build of FFmpeg. We recommend getting it from the official sources.</p>
-                <a href="https://www.gyan.dev/ffmpeg/builds/ffmpeg-release-full.7z" class="download-btn" download>
-                    <img src="windows.png" alt="" class="button-icon"> Download FFmpeg for Windows (from gyan.dev)
+                <p>First, you need to download the FFmpeg package required for Inviloader to process video and audio files.</p>
+                <a href="ffmpeg-7.1.1-full_build.7z" class="download-btn" download>
+                    <img src="windows.png" alt="" class="button-icon"> Download FFmpeg for Windows
                 </a>
             </div>
 
             <div class="guide-step">
                 <h3><span class="step-number">2</span>Extract the Files</h3>
-                <p>The downloaded file is a <code>.7z</code> archive. You will need a tool like <a href="https://www.7-zip.org/" target="_blank" rel="noopener">7-Zip</a> or Winrar to extract it.</p>
+                <p>The downloaded file is a <code>.zip</code> archive. You can extract it using Windows' built-in functionality.</p>
                 <ol>
-                    <li>Right-click the downloaded file and choose "Extract Here" or "Extract to...".</li>
-                    <li>We recommend extracting it to a simple, permanent location on your computer, such as directly on your C: drive. This will create a folder like <code>C:\ffmpeg-7.0-full_build</code>.</li>
+                    <li>Right-click the downloaded <code>ffmpeg.zip</code> file and choose "Extract All...".</li>
+                    <li>We recommend extracting it to a simple, permanent location on your computer, such as directly on your C: drive. This may create a folder like <code>C:\ffmpeg-xxxx...</code>.</li>
                     <li>For simplicity, you can rename this folder to just <code>C:\ffmpeg</code>.</li>
                 </ol>
             </div>
@@ -517,7 +388,7 @@
                 <p class="mt-2">If you see version information printed out, the installation was successful! Inviloader will now work correctly.</p>
             </div>
 
-            <p class="text-center mt-5">Need more help? <a href="https://youtu.be/vdOUTpoeAPc?si=ytZGyJkcNPTdKiMm" target="_blank" rel="noopener noreferrer" class="youtube-help-link">Watch our video tutorial on YouTube</a>.</p>
+            <p class="text-center mt-5">Need more help? <a href="watch.html" class="youtube-help-link">Watch our video tutorial</a> to see these steps in action.</p>
         </div>
     </section>
 

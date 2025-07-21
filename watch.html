@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Installation Guide - Inviloader</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.png" type="image/x-icon">
+
+    <!-- NEW: Plyr Player CSS -->
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
+
+    <style>
+        :root {
+            --background-dark: #121212;
+            --background-medium: #1b1b1b;
+            --text-primary: #e0e0e0;
+            --text-accent: #ffffff;
+            --accent-color: #6a0dad;
+            --accent-hover: #7323d0;
+            --border-color: #333;
+            --font-family-base: 'Quicksand', sans-serif;
+
+            /* --- NEW: Customizing Plyr to match your theme --- */
+            --plyr-color-main: var(--accent-color);
+            --plyr-video-control-background: rgba(27, 27, 27, 0.8);
+            --plyr-font-family: var(--font-family-base);
+        }
+
+        html { box-sizing: border-box; }
+        *, *:before, *:after { box-sizing: inherit; }
+
+        body {
+            font-family: var(--font-family-base);
+            background-color: var(--background-dark);
+            color: var(--text-primary);
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem 1rem;
+        }
+
+        .watch-container {
+            width: 100%;
+            max-width: 1140px;
+            text-align: center;
+        }
+
+        .video-header h1 {
+            color: var(--text-accent);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .video-header p {
+            color: var(--text-primary);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 2rem auto;
+        }
+        
+        .download-links-section {
+            background-color: var(--background-medium);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 2.5rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .download-links-section h3 {
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            color: var(--text-accent);
+        }
+
+        .buttons-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .download-btn {
+            background-color: var(--accent-color);
+            color: var(--text-accent);
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+        }
+        .download-btn:hover {
+            background-color: var(--accent-hover);
+            color: var(--text-accent);
+            transform: translateY(-2px);
+        }
+        .download-btn .button-icon { width: 20px; height: 20px; }
+        .github-btn { background-color: #333; }
+        .github-btn:hover { background-color: #444; }
+
+        /* The video player now gets its styling from Plyr.css */
+        /* We just give it a nice shadow and border. */
+        .plyr--video {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--border-color);
+        }
+        
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-top: 2.5rem;
+            padding: 0.8rem 1.8rem;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-accent);
+            background-color: var(--background-medium);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+        .back-button:hover {
+            background-color: var(--border-color);
+            transform: translateY(-3px);
+            color: var(--text-accent);
+        }
+        .back-button .arrow { font-size: 1.5rem; line-height: 1; }
+    </style>
+</head>
+<body>
+
+    <main class="watch-container">
+        
+        <div class="video-header">
+            <h1>Inviloader & FFmpeg Installation Guide</h1>
+            <p>Welcome! Download the required files below, then watch the video to see the complete setup process for both Inviloader and its FFmpeg dependency.</p>
+        </div>
+
+        <!-- Download Links Section -->
+        <section class="download-links-section">
+            <h3>Step 1: Download Required Files</h3>
+            <div class="buttons-wrapper">
+                <a href="https://github.com/boyoftime/youtube/releases" class="download-btn github-btn" target="_blank" rel="noopener noreferrer">
+                    <img src="github.png" alt="GitHub Icon" class="button-icon">
+                    Download Inviloader
+                </a>
+                <a href="fffmpeg-7.1.1-full_build.7z" class="download-btn" download>
+                    <img src="windows.png" alt="Windows Icon" class="button-icon">
+                    Download FFmpeg
+                </a>
+            </div>
+        </section>
+
+        <!-- The video tag is now simpler. It just needs an ID. -->
+        <video 
+            id="player"
+            playsinline
+            controls
+            preload="auto"
+            poster="video-poster.png">
+            <source src="inviloader.mp4" type="video/mp4">
+            Your browser does not support the video tag. Please update it to watch this tutorial.
+        </video>
+        
+        <a href="index.html" class="back-button">
+            <span class="arrow">←</span> Back to Main Page
+        </a>
+
+    </main>
+
+    <!-- NEW: Plyr Player JavaScript -->
+    <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
+
+    <!-- NEW: Initialize Plyr -->
+    <script>
+        // This single line is all we need to turn our video tag into a beautiful Plyr player!
+        const player = new Plyr('#player');
+    </script>
+
+</body>
+</html>
