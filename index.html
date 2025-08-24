@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Inviloader is a free and fast YouTube video downloader. Download and explore different versions of our powerful desktop application.">
-    <title>Inviloader - Free YouTube Video Downloader & Releases</title>
+    <meta name="description" content="Inviloader is the world's most powerful free YouTube downloader. Download videos and audio effortlessly with the Medusa Release. Zero setup required.">
+    <title>Inviloader - The Ultimate Free YouTube Downloader</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,18 +22,24 @@
 
     <style>
         :root {
-            --background-dark: #1b1b1b;
-            --background-medium: #2c2c2c;
-            --background-light: #111;
+            --background-dark: #121212;
+            --background-medium: #1e1e1e;
+            --background-light: #181818;
             --text-primary: #e0e0e0;
-            --text-light: #f8f9fa;
+            --text-light: #ffffff;
             --text-accent: #ffffff;
             --accent-color: #6a0dad; /* Purple */
-            --accent-hover: #7323d0;
+            --accent-hover: #7b2cbf;
             --link-color: #ffd700; /* Gold */
-            --border-color: #444;
-            --shadow-color: rgba(0, 0, 0, 0.2);
+            --border-color: #333;
+            --shadow-color: rgba(0, 0, 0, 0.5);
             --font-family-base: 'Quicksand', sans-serif;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(123, 44, 191, 0.7); }
+            70% { transform: scale(1.05); box-shadow: 0 0 10px 20px rgba(123, 44, 191, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(123, 44, 191, 0); }
         }
 
         html { scroll-behavior: smooth; }
@@ -45,7 +51,7 @@
             line-height: 1.6;
         }
         h1, h2, h3, h4, h5, h6 {
-            color: var(--text-accent);
+            color: var(--text-light);
             font-weight: 700;
         }
         a {
@@ -69,164 +75,151 @@
 
         /* Header Section */
         .hero-header {
-            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('background.webp');
+            background-image: radial-gradient(circle at 50% 30%, rgba(106, 13, 173, 0.2), transparent 70%), linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('background.webp');
             background-size: cover;
             background-position: center;
             color: var(--text-accent);
-            padding: 4rem 1rem;
+            padding: 5rem 1rem;
             text-align: center;
         }
         .hero-header img.logo {
-            max-width: 120px;
+            width: 120px;
             height: 120px;
             border-radius: 50%;
-            margin: 0 auto 1rem;
+            margin: 0 auto 1.5rem;
+            border: 3px solid var(--accent-color);
         }
         .hero-header h1 {
-            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-size: clamp(2.8rem, 6vw, 4rem);
             margin-bottom: 0.5rem;
+            text-shadow: 0 0 15px rgba(0,0,0,0.8);
         }
         .hero-header p {
-            font-size: clamp(1.1rem, 3vw, 1.25rem);
-            max-width: 600px;
-            margin: 0 auto;
+            font-size: clamp(1.1rem, 3vw, 1.3rem);
+            max-width: 700px;
+            margin: 0 auto 2rem;
             font-weight: 500;
+        }
+        .hero-header .download-btn {
+            animation: pulse 2s infinite;
         }
 
         /* Showcase Section */
-        .showcase-section { padding: 3rem 0; }
+        .showcase-section { padding: 4rem 0; }
         .showcase-image-wrapper {
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.7);
             border: 2px solid var(--border-color);
         }
 
-        /* About Section */
-        .about-section {
+        /* Features Section */
+        .features-section {
             background-color: var(--background-medium);
-            padding: 3rem 0;
+            padding: 4rem 0;
             border-top: 1px solid var(--border-color);
             border-bottom: 1px solid var(--border-color);
         }
-        .feature-list {
-            list-style: none;
-            padding-left: 0;
-        }
-        .feature-list li {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 1.25rem;
-        }
-        .feature-term {
-            flex: 0 0 220px; /* Fixed width for the title column */
-            padding-right: 1.5rem;
-            display: flex;
-            align-items: flex-start;
-            font-weight: 700;
-            color: var(--text-light);
-        }
-        .feature-term .feature-icon {
-            color: var(--link-color);
-            margin-right: 0.75rem;
-            font-size: 1.2rem;
-            margin-top: 0.1rem;
-        }
-        .feature-definition {
-            flex: 1;
-            color: var(--text-primary);
-        }
-        @media (max-width: 767px) {
-            .feature-list li {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            .feature-term {
-                flex-basis: auto;
-                margin-bottom: 0.5rem;
-                padding-right: 0;
-            }
-        }
-        .coming-soon-box {
-            background-color: #3a3f4c;
+        .feature-card {
+            background-color: var(--background-dark);
             border: 1px solid var(--border-color);
-            border-left: 5px solid var(--accent-color);
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin-top: 2rem;
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            height: 100%;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(106, 13, 173, 0.3);
+        }
+        .feature-card .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
         }
 
         /* Download Button Styles */
         .download-btn {
             background-color: var(--accent-color);
             color: var(--text-accent);
-            padding: 0.75rem 1.5rem;
-            border-radius: 5px;
+            padding: 0.8rem 1.8rem;
+            border-radius: 8px;
             font-weight: 700;
             display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 0.75rem;
             text-decoration: none;
-            border: none;
+            border: 2px solid var(--accent-color);
             cursor: pointer;
             transition: background-color 0.2s ease, transform 0.1s ease;
         }
         .download-btn:hover {
             background-color: var(--accent-hover);
+            border-color: var(--accent-hover);
             color: var(--text-accent);
             transform: translateY(-2px);
         }
-        .download-btn .button-icon { width: 20px; height: 20px; }
-        .github-btn { background-color: #333; }
-        .github-btn:hover { background-color: #444; }
+        .download-btn .button-icon { width: 24px; height: 24px; }
+        
+        /* NEW: Secondary GitHub Button Style */
+        .github-btn {
+            background-color: transparent;
+            border-color: var(--border-color);
+        }
+        .github-btn:hover {
+            background-color: var(--border-color);
+            border-color: var(--border-color);
+        }
+
+        /* NEW: Container for buttons */
+        .download-buttons-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
 
         /* Releases Section */
-        .releases-section { padding: 3rem 0; }
+        .releases-section { padding: 4rem 0; }
         
-        /* --- Installation Guide Section Styles --- */
+        /* Installation Guide Section */
         .installation-guide-section {
             background-color: var(--background-medium);
-            padding: 3rem 0;
+            padding: 4rem 0;
         }
         .guide-step {
-            padding: 1.5rem 0;
-            border-bottom: 1px solid var(--border-color);
-        }
-        .guide-step:last-child {
-            border-bottom: none;
+            text-align: center;
+            padding: 1.5rem;
         }
         .guide-step h3 {
             color: var(--text-light);
             margin-bottom: 1rem;
             display: flex;
             align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
         }
         .guide-step .step-number {
             background-color: var(--accent-color);
             color: var(--text-accent);
             border-radius: 50%;
-            width: 30px;
-            height: 30px;
+            width: 40px;
+            height: 40px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            font-size: 1rem;
+            font-size: 1.2rem;
             font-weight: 700;
             margin-right: 1rem;
         }
-        .guide-step code {
-            background-color: var(--background-dark);
-            color: #f0ad4e;
-            padding: 0.2em 0.5em;
-            border-radius: 4px;
-            font-size: 0.9em;
-            word-break: break-all;
+        .arrow {
+            font-size: 2rem;
+            color: var(--accent-color);
+            margin: 1rem 0;
         }
-        .guide-step ol li, .guide-step ul li {
-            margin-bottom: 0.5rem;
-        }
-        .youtube-help-link { color: var(--link-color) !important; font-weight: 700; text-decoration: underline; }
         
         /* Footer Section */
         footer {
@@ -244,14 +237,18 @@
     <!-- Header -->
     <header class="hero-header">
         <img src="inviloader.png" alt="Inviloader Logo" class="logo">
-        <h1>Welcome to Inviloader</h1>
-        <p> A free powerful tool to download YouTube videos with ease</p>
+        <h1>The Medusa Release</h1>
+        <p>The world's most powerful YouTube downloader is here. Turn any video to stone in your collection—effortlessly and instantly. <strong>Zero setup required.</strong></p>
+        <a href="#releases" class="download-btn" style="padding: 1rem 2rem; font-size: 1.2rem;">
+            <img src="windows.png" alt="" class="button-icon">
+            Download for Windows
+        </a>
     </header>
 
     <!-- Showcase Section -->
     <section class="showcase-section">
         <div class="container">
-            <h2 class="text-center mb-4">Get started now </h2>
+            <h2 class="text-center mb-5 display-6">Capture Anything You Set Your Sights On</h2>
             <div class="row justify-content-center">
                 <div class="col-lg-10">
                     <div class="showcase-image-wrapper">
@@ -264,131 +261,111 @@
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="about-section">
+    <!-- Features Section -->
+    <section id="features" class="features-section">
         <div class="container">
-            <h2 class="text-center mb-4">What is Inviloader?</h2>
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <p class="lead text-center mb-5">
-                        Inviloader is a free simple yet powerful desktop application for Windows, designed to make downloading videos and audio from YouTube a fast and easy experience. It provides a clean, modern interface to manage your downloads without needing to use complex command-line tools.
-                    </p>
-                    
-                    <div class="row">
-                        <div class="col-lg-6 mb-4 mb-lg-0">
-                            <h3>Key Features</h3>
-                            <ul class="feature-list">
-                                <li>
-                                    <div class="feature-term"><span class="feature-icon">🎬</span>High-Quality Video</div>
-                                    <div class="feature-definition">Save videos in various resolutions. The app automatically merges video and audio for the best quality.</div>
-                                </li>
-                                <li>
-                                    <div class="feature-term"><span class="feature-icon">🎵</span>MP3 Audio Extraction</div>
-                                    <div class="feature-definition">Convert any YouTube video into an MP3 file with selectable bitrates (128kbps to 320kbps).</div>
-                                </li>
-                                <li>
-                                    <div class="feature-term"><span class="feature-icon">📥</span>Dynamic Download Queue</div>
-                                    <div class="feature-definition">Manage multiple downloads at once with live progress, speed, and ETA tracking.</div>
-                                </li>
-                                <li>
-                                    <div class="feature-term"><span class="feature-icon">✨</span>Intuitive Interface</div>
-                                    <div class="feature-definition">A clean, modern GUI that's easy to navigate, with smart buttons and clear feedback.</div>
-                                </li>
-                                <li>
-                                    <div class="feature-term"><span class="feature-icon">🔄</span>Built-in Updater</div>
-                                    <div class="feature-definition">Check and download for new versions directly from within the application.</div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="col-lg-6">
-                            <h3>System Requirements</h3>
-                             <ul class="feature-list">
-                                <li>
-                                    <div class="feature-term"><span class="feature-icon">🖥️</span>Operating System</div>
-                                    <div class="feature-definition">Windows 10 or newer (64-bit).</div>
-                                </li>
-                                <li>
-                                    <div class="feature-term"><span class="feature-icon">🔗</span>FFmpeg</div>
-                                    <div class="feature-definition">Required for all video/audio processing. A full installation guide is provided below.</div>
-                                </li>
-                                <li>
-                                    <div class="feature-term"><span class="feature-icon">🌐</span>Internet Connection</div>
-                                    <div class="feature-definition">Needed to fetch video data and download files.</div>
-                                </li>
-                            </ul>
-                            <div class="coming-soon-box">
-                                <h4>Upcoming Features</h4>
-                                <p class="mb-0">Stay tuned for exciting new updates, including Pro features like support for more operating systems and much more!</p>
-                            </div>
-                        </div>
+            <h2 class="text-center mb-5 display-5">A Legendary Arsenal of Features</h2>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="icon">🐍</div>
+                        <h3>Truly Portable Power</h3>
+                        <p>Inviloader now comes with **FFmpeg built-in**. No more complicated setups or external downloads. It works perfectly, right out of the box.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="icon">🎯</div>
+                        <h3>Unflinching Sequential Queue</h3>
+                        <p>Downloads are processed one-by-one, **petrifying network errors** and ensuring even massive playlists are captured flawlessly without fail.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="icon">✨</div>
+                        <h3>Immortalize in HD & MP3</h3>
+                        <p>Capture videos in stunning high definition or convert them to high-quality MP3 audio. Your collection, immortalized in perfect quality.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="icon">🔮</div>
+                        <h3>All-Seeing Intelligence</h3>
+                        <p>Paste a playlist link and watch as Inviloader **automatically detects it**. It's smarter, faster, and anticipates your every move.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="icon">🔄</div>
+                        <h3>Renewed Potency</h3>
+                        <p>With the **one-click Core Updater**, Inviloader sheds its skin to overcome any new challenge, keeping its power eternally effective.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="icon">💎</div>
+                        <h3>Absolute Control</h3>
+                        <p>A clean, modern interface gives you total command. Re-download, overwrite, and manage your queue with legendary ease.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Releases Section -->
+    <!-- MODIFIED Releases Section -->
     <section id="releases" class="releases-section">
         <div class="container">
-            <h2 class="text-center mb-4">Download Inviloader</h2>
-            <p class="text-center text-secondary mb-5">Click the button below to go to our official GitHub page where you can find the latest version and all previous releases for Windows (x64).</p>
+            <h2 class="text-center mb-4 display-5">Claim Your Power</h2>
+            <p class="text-center text-secondary mb-5">For the fastest experience, download directly with one click. <br>Or, visit GitHub for previous versions and release notes.</p>
             
-            <div class="text-center">
-                <a href="https://github.com/boyoftime/youtube/releases" class="download-btn" target="_blank" rel="noopener noreferrer" style="padding: 1rem 2rem; font-size: 1.2rem;">
-                    <img src="github.png" alt="" class="button-icon" style="width: 24px; height: 24px;">
-                    Download on Github
+            <div class="download-buttons-container">
+                <!-- Primary Direct Download Button -->
+                <a href="https://github.com/boyoftime/youtube/releases/download/v13.7.0/Inviloader_v13.7.0_Setup.exe" class="download-btn" style="padding: 1rem 2rem; font-size: 1.2rem;" download>
+                    <img src="windows.png" alt="" class="button-icon">
+                    Fast Download (.exe)
+                </a>
+                <!-- Secondary GitHub Button -->
+                <a href="https://github.com/boyoftime/youtube/releases" class="download-btn github-btn" target="_blank" rel="noopener noreferrer" style="padding: 1rem 2rem; font-size: 1.2rem;">
+                    <img src="github.png" alt="" class="button-icon">
+                    View on GitHub
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Installation Guide Section -->
-    <section id="ffmpeg-guide" class="installation-guide-section">
+    <!-- MODIFIED Simplified Installation Guide Section -->
+    <section id="installation" class="installation-guide-section">
         <div class="container">
-            <h2 class="display-6 fw-bold text-center">FFmpeg Installation Guide</h2>
-            <p class="text-center lead mb-5">Inviloader requires <strong>FFmpeg</strong> to process video and audio. Follow these steps for Windows.</p>
+            <h2 class="display-6 fw-bold text-center">Installation: A Gaze of Simplicity</h2>
+            <p class="text-center lead mb-5">The days of complex setups are over. Unleashing Inviloader is this easy.</p>
 
-            <div class="guide-step">
-                <h3><span class="step-number">1</span>Download FFmpeg</h3>
-                <p>First, you need to download the FFmpeg package required for Inviloader to process video and audio files.</p>
-                <a href="ffmpeg-7.1.1-full_build.7z" class="download-btn" download>
-                    <img src="windows.png" alt="" class="button-icon"> Download FFmpeg for Windows
-                </a>
+            <div class="row align-items-center">
+                <div class="col-md-4 guide-step">
+                    <h3><span class="step-number">1</span>Download</h3>
+                    <p>Get the latest release using the buttons above.</p>
+                </div>
+                <div class="col-md-1 d-none d-md-block text-center">
+                    <div class="arrow">→</div>
+                </div>
+                <div class="col-md-2 d-md-none text-center">
+                    <div class="arrow">↓</div>
+                </div>
+                <div class="col-md-4 guide-step">
+                    <h3><span class="step-number">2</span>Install</h3>
+                    <p>Run the downloaded installer and follow the on-screen instructions.</p>
+                </div>
+                <div class="col-md-1 d-none d-md-block text-center">
+                    <div class="arrow">→</div>
+                </div>
+                 <div class="col-md-2 d-md-none text-center">
+                    <div class="arrow">↓</div>
+                </div>
+                <div class="col-md-2 guide-step">
+                    <h3><span class="step-number">3</span>Launch</h3>
+                    <p>Open Inviloader using the new shortcut on your desktop.</p>
+                </div>
             </div>
-
-            <div class="guide-step">
-                <h3><span class="step-number">2</span>Extract the Files</h3>
-                <p>The downloaded file is a <code>.zip</code> archive. You can extract it using Windows' built-in functionality.</p>
-                <ol>
-                    <li>Right-click the downloaded <code>ffmpeg.zip</code> file and choose "Extract All...".</li>
-                    <li>We recommend extracting it to a simple, permanent location on your computer, such as directly on your C: drive. This may create a folder like <code>C:\ffmpeg-xxxx...</code>.</li>
-                    <li>For simplicity, you can rename this folder to just <code>C:\ffmpeg</code>.</li>
-                </ol>
-            </div>
-
-            <div class="guide-step">
-                <h3><span class="step-number">3</span>Add FFmpeg to the System PATH</h3>
-                <p>This is the most important step. It allows Windows and Inviloader to find FFmpeg from anywhere.</p>
-                <ol>
-                    <li>Open the folder you just created (e.g., <code>C:\ffmpeg</code>) and find the <code>bin</code> folder inside.</li>
-                    <li>Click in the address bar at the top of the File Explorer window to select the full path, and copy it. It should look like <code>C:\ffmpeg\bin</code>.</li>
-                    <li>Press the Windows key and search for "Environment Variables", then click on "Edit the system environment variables".</li>
-                    <li>In the System Properties window, click the "Environment Variables..." button.</li>
-                    <li>In the "System variables" section at the bottom, find and double-click on the "Path" variable.</li>
-                    <li>Click the "New" button, paste the path you copied (<code>C:\ffmpeg\bin</code>), and press Enter.</li>
-                    <li>Click "OK" on all the windows to close and save the changes.</li>
-                </ol>
-            </div>
-
-            <div class="guide-step">
-                <h3><span class="step-number">4</span>Verify the Installation</h3>
-                <p>To make sure everything worked, you must open a <strong>new</strong> Command Prompt or PowerShell window (do not reuse an old one).</p>
-                <p>Type the following command and press Enter:</p>
-                <code>ffmpeg -version</code>
-                <p class="mt-2">If you see version information printed out, the installation was successful! Inviloader will now work correctly.</p>
-            </div>
-
-            <p class="text-center mt-5">Need more help? <a href="watch.html" class="youtube-help-link">Watch our video tutorial</a> to see these steps in action.</p>
+            <p class="text-center mt-4"><strong>That's it.</strong> You have now unleashed the full power of Inviloader.</p>
         </div>
     </section>
 
@@ -420,5 +397,6 @@
         })
     </script>
 
+    
 </body>
 </html>
